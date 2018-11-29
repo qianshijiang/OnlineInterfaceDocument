@@ -1,0 +1,26 @@
+debug: false
+server:
+  port: 8088
+  servlet:
+      context-path: /OnlineInterfaceDocument
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+    static-path-pattern: /static/**
+  datasource:
+    #driver-class-name: oracle.jdbc.OracleDriver
+    driver-class-name: com.mysql.jdbc.Driver
+    #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
+    url: jdbc:mysql://118.25.195.253:3306/odr2_yn?autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: yn_odr520!
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.cn.OnlineInterfaceDocument.domain
+
+  #log4j2
+logging:
+  config: classpath:log4j2-spring.xml

@@ -8,6 +8,11 @@
     <properties resource="generator/generator.properties"/>
     <classPathEntry location="${classPathEntry}"/>
     <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressDate" value="false" />
+            <!-- 下面一行用于取消注释的生成 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection
                 driverClass="com.mysql.jdbc.Driver"
@@ -15,22 +20,30 @@
                 userId="${userId}"
                 password="${password}">
         </jdbcConnection>
+
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
+
         <javaModelGenerator targetPackage="${pojoTargetPackage}" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+
         <!-- 生成映射文件的包名和位置-->
         <sqlMapGenerator targetPackage="${mapperTargetPackage}" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
+
         <!-- 生成DAO的包名和位置-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="${daoTargetPackage}" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
+
         <!-- 要生成的表 tableName是数据库中的表名或视图名 schema是数据库名称-->
-        <table tableName="%" schema="${db}"/>
+        <table tableName="%" schema="${db}"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

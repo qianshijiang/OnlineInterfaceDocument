@@ -2,12 +2,14 @@ package com.cn.interfacedocument.response;
 
 import com.cn.interfacedocument.response.util.ResponseCodeEnum;
 
- /**
+import java.io.Serializable;
+
+/**
  * @author QSJ
  * @describe 作为统一的响应对象
  * @date 2018-04-10
  */
-public class ResultModel {
+public class ResultModel implements Serializable{
 	public static final String SUCCESS_CODE;
     public static final String ERROR_CODE;
     public static final String WARN_CODE;

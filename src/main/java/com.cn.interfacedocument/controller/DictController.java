@@ -2,7 +2,7 @@ package com.cn.interfacedocument.controller;
 
 import com.cn.interfacedocument.entity.Dict;
 import com.cn.interfacedocument.response.ResultModel;
-import com.cn.interfacedocument.service.dictService;
+import com.cn.interfacedocument.service.DictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DictController {
 
     @Autowired
-    private dictService dictService;
+    private DictService dictService;
 
     @ApiOperation("添加")
     @RequestMapping(value = "/add", method = RequestMethod.POST)

@@ -2,10 +2,10 @@ package com.cn.interfacedocument.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
 import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -14,29 +14,34 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  *
  * Created by QSJ on 2018/11/29.
  */
-@Configuration                      //注解表示这个是一个配置文件，让spring来加载该类配置
-@EnableSwagger2                     //注解表示启用Swagger2
+@Configuration   //注解表示这个是一个配置文件，让spring来加载该类配置
+@EnableSwagger2
 public class SwaggerConfig {
 
-    @Bean                           //注解表示交由bean容器去管理
-    public Docket newsApi() {
-        Docket docket = new Docket(DocumentationType.SWAGGER_2);
-        docket.enable(true);
-        //apiInfo()用来创建该Api的基本信息（这些基本信息会展现在文档页面中）。
-        //select()函数返回一个ApiSelectorBuilder实例用来控制哪些接口暴露给Swagger来展现，本例采用指定扫描的包路径来定义，Swagger会扫描该包下所有Controller定义的API，并产生文档内容（除了被@ApiIgnore指定的请求）。
-        docket.apiInfo(apiInfo())
-                .select()
-                .apis(RequestHandlerSelectors.basePackage("com.cn.interfacedocument.controller"))
-                .paths(PathSelectors.any()).build();
-        return docket;
+    // 接口版本号
+    private final String version = "1.0";
+    // 接口大标题
+    private final String title = "SpringBoot示例工程";
+    // 具体的描述
+    private final String description = "API文档自动生成示例";
+    // 服务说明url
+    private final String termsOfServiceUrl = "http://www.itblogger.cn";
+    // licence
+    private final String license = "MIT";
+    // licnce url
+    private final String licenseUrl = "https://mit-license.org/";
+    // 接口作者联系方式
+    private final Contact contact = new Contact("钱仕江", "https://github.com/qianshijiang/OnlineInterfaceDocument.git", "1965297290@qq.com");
+
+    @Bean
+    public Docket buildDocket() {
+        return new Docket(DocumentationType.SWAGGER_2).apiInfo(buildApiInf())
+                .select().build();
     }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("dali的项目")
-                .description("在这里你可以浏览项目所有接口，并提供相关测试工具")
-                .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
-                .contact("test")
-                .license("China Red Star Licence Version 1.0").licenseUrl("#").version("1.0").build();
+    private ApiInfo buildApiInf() {
+        return new ApiInfoBuilder().title(title).termsOfServiceUrl(termsOfServiceUrl).description(description)
+                .version(version).license(license).licenseUrl(licenseUrl).contact(contact).build();
+
     }
 }

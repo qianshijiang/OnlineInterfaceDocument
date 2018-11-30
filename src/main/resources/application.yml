@@ -10,12 +10,12 @@ spring:
    #   suffix: .jsp
    # static-path-pattern: /static/**
     datasource:
+            name: mysql
             #Oracle驱动
             #driver-class-name: oracle.jdbc.OracleDriver
             #mysql驱动
             driver-class-name: com.mysql.jdbc.Driver
             # 如果存在多个数据源，监控的时候可以通过名字来区分开来
-            name: mysql
             # 连接数据库的url
             #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
             url: jdbc:mysql://118.25.195.253:3306/odr2_yn?autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
@@ -64,8 +64,17 @@ logging:
   config: classpath:log4j2-spring.xml
 
   # pagehelper分页插件
-  pagehelper:
+pagehelper:
       # 数据库的方言
       helperDialect: mysql
       # 启用合理化，如果pageNum < 1会查询第一页，如果pageNum > pages会查询最后一页
       reasonable: true
+
+#应用配置
+resources:
+    # log文件写入地址
+    logdir: log/
+    # 应用名称
+    appname: spring-boot-example
+    # 日志打印的基础扫描包
+    basepackage: com.cn.interfacedocument

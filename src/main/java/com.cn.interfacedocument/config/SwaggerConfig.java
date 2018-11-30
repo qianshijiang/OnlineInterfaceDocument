@@ -11,7 +11,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- *
+ * Swagger配置
  * Created by QSJ on 2018/11/29.
  */
 @Configuration   //注解表示这个是一个配置文件，让spring来加载该类配置

@@ -56,8 +56,8 @@ public class DictService implements DictMapper {
      * 查询所有的
      * @return
      */
-    public List<Dict> findList(){
-        return this.findList();
+    public List<Dict> findListByPage(Dict dict){
+        return this.findListByPage(dict);
     }
 
     /**

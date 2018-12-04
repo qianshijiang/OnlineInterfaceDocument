@@ -13,7 +13,7 @@ public interface DictMapper {
 
     Dict selectByPrimaryKey(Long id);
 
-    List<Dict> findList();
+    List<Dict> findListByPage(Dict dict);
 
     int updateByPrimaryKeySelective(Dict record);
 

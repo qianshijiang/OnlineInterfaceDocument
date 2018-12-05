@@ -6,3 +6,9 @@
 1.SpringBoot
 
 2.Swagger
+
+3.Mybatis
+
+4.Mysql
+
+构建一个二维码生成服务

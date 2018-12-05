@@ -5,10 +5,9 @@ import com.cn.interfacedocument.entity.Dict;
 import java.util.List;
 
 
-public interface DictMapper extends BaseMapper{
-    int deleteByPrimaryKey(Long id);
+public interface DictMapper extends BaseMapper<Dict>{
 
-    int insert(Dict record);
+    int deleteByPrimaryKey(Long id);
 
     int insertSelective(Dict record);
 

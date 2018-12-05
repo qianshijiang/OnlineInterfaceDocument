@@ -2,16 +2,19 @@ package com.cn.interfacedocument.service;
 
 import com.cn.interfacedocument.dao.DictMapper;
 import com.cn.interfacedocument.entity.Dict;
+import com.cn.interfacedocument.response.ResultModel;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
+ * 业务层
  * Created by QSJ on 2018/11/29.
  */
 @Service
-public class DictService implements DictMapper {
+public class DictService extends AbstractService {
 
     @Autowired
     private DictMapper dictdao;
@@ -22,7 +25,7 @@ public class DictService implements DictMapper {
      * @return
      */
     public int deleteByPrimaryKey(Long id){
-        return this.deleteByPrimaryKey(id);
+        return this.dictdao.deleteByPrimaryKey(id);
     }
 
     /**
@@ -53,11 +56,34 @@ public class DictService implements DictMapper {
     }
 
     /**
+     * 分页查询
+     * @return
+     */
+    public ResultModel findListByPage(Dict dict,int currentPage,int pageSize){
+        //设置分页信息，分别是当前页数和每页显示的总记录数
+        PageHelper.startPage(currentPage, pageSize);
+
+        List<Dict> allDicts = this.dictdao.findList();        //全部基础数据
+        int countNums = this.dictdao.getCount();              //总记录数
+        ResultModel pageData = new ResultModel(currentPage, pageSize, countNums);
+        pageData.setData(allDicts);
+        return pageData;
+    }
+
+    /**
      * 查询所有的
      * @return
      */
-    public List<Dict> findListByPage(Dict dict){
-        return this.findListByPage(dict);
+    public List<Dict> findList(){
+        return this.dictdao.findList();
+    }
+
+    /**
+     * 查询案件数量
+     * @return
+     */
+    public int getCount(){
+        return this.dictdao.getCount();
     }
 
     /**

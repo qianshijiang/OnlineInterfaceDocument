@@ -1,8 +1,10 @@
 package com.cn.interfacedocument.dao;
 
 import com.cn.interfacedocument.entity.Dict;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 public interface DictMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,6 +16,10 @@ public interface DictMapper {
     Dict selectByPrimaryKey(Long id);
 
     List<Dict> findListByPage(Dict dict);
+
+    List<Dict> findList();
+
+    int getCount();
 
     int updateByPrimaryKeySelective(Dict record);
 

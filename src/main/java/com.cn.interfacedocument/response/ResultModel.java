@@ -9,7 +9,8 @@ import java.io.Serializable;
  * @describe 作为统一的响应对象
  * @date 2018-04-10
  */
-public class ResultModel implements Serializable{
+public class ResultModel extends PageBean implements Serializable {
+
 	public static final String SUCCESS_CODE;
     public static final String ERROR_CODE;
     public static final String WARN_CODE;
@@ -31,8 +32,18 @@ public class ResultModel implements Serializable{
         this.error = error;
     }
 
+    public ResultModel(Integer currentPage, Integer pageSize, Integer totalNum) {
+        super(currentPage,pageSize,totalNum);
+    }
+
     public static ResultModel success(String message, Object data) {
         return new ResultModel(SUCCESS_CODE, data, message, "");
+    }
+
+    public static ResultModel successfull(String message,ResultModel resultModel){
+        resultModel.setMessage(message);
+        resultModel.setCode(SUCCESS_CODE);
+        return resultModel;
     }
 
     public static ResultModel success(Object data) {

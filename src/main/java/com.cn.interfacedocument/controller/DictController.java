@@ -26,7 +26,7 @@ public class DictController {
 
     @ApiOperation("添加")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    private ResultModel add(@RequestBody Dict dict) {
+    public ResultModel add(@RequestBody Dict dict) {
         Integer row = dictService.insert(dict);
 
         if (row > 0) {
@@ -35,6 +35,16 @@ public class DictController {
           return ResultModel.fail("新增失败","-1");
         }
     }
+
+    @ApiOperation("分页查询")
+    @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
+    public ResultModel findListByPage(Dict dict,int currentPage,int pageSize){
+      int startPage = currentPage==0?1:currentPage;
+      int pagSize = pageSize==0?10:pageSize;
+      return ResultModel.successfull("查询成功",this.dictService.findListByPage(dict,startPage,pagSize));
+    }
+
+
 
 
 

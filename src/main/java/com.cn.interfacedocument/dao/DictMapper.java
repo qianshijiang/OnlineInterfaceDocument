@@ -1,7 +1,6 @@
 package com.cn.interfacedocument.dao;
 
 import com.cn.interfacedocument.entity.Dict;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 

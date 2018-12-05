@@ -6,10 +6,7 @@ import com.cn.interfacedocument.service.DictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 基础表控制层
@@ -38,6 +35,7 @@ public class DictController {
 
     @ApiOperation("分页查询")
     @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
+    @ResponseBody
     public ResultModel findListByPage(Dict dict,int currentPage,int pageSize){
       int startPage = currentPage==0?1:currentPage;
       int pagSize = pageSize==0?10:pageSize;

@@ -43,6 +43,7 @@ public class ResultModel extends PageBean implements Serializable {
     public static ResultModel successfull(String message,ResultModel resultModel){
         resultModel.setMessage(message);
         resultModel.setCode(SUCCESS_CODE);
+        resultModel.setError("");
         return resultModel;
     }
 

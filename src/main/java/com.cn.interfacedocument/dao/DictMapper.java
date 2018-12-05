@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 
-public interface DictMapper {
+public interface DictMapper extends BaseMapper{
     int deleteByPrimaryKey(Long id);
 
     int insert(Dict record);

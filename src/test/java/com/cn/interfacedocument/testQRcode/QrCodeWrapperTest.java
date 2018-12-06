@@ -243,8 +243,8 @@ public class QrCodeWrapperTest {
 //        String msg = "https://my.oschina.net/u/566591/blog";
 
         try {
-            String logo = "src/main/resources/static/images/logo.jpg";
-//            String bg = "src/main/resources/static/images/bg.png";
+            String logo = "logo.jpg";
+//            String bg = "bg.png";
             String bg = "http://bpic.588ku.com/master_pic/00/10/04/8656612a16e2e6a.jpg";
             BufferedImage img = QrCodeGenWrapper.of(msg)
                     .setW(550)

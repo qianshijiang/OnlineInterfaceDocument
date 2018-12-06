@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class QrDetectTest {
 
-    private String msg = "https://liuyueyi.github.io/hexblog/";
+    private String msg = "https://mp.csdn.net/postedit/79499687";
 
     @Test
     public void testGenQr() throws IOException, WriterException {
@@ -32,7 +32,7 @@ public class QrDetectTest {
 
     @Test
     public void testBase642Ima() throws IOException {
-        BufferedImage bfimg = ImageIO.read(new File("/Users/qsj/22.png"));
+        BufferedImage bfimg = ImageIO.read(new File("D:/QRCode/22.png"));
         String str = Base64Util.encode(bfimg, "png");
 
         try {

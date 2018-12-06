@@ -1,7 +1,7 @@
 package com.cn.interfacedocument.qrcode.util;
 
 /**
- * Created by @author yihui in 19:34 18/9/10.
+ * Created by qsj in 19:34 18/9/10.
  */
 public class OSUtil {
 

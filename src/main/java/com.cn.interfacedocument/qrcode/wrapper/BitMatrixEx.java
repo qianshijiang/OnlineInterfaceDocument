@@ -7,7 +7,7 @@ import lombok.Setter;
 /**
  * 扩展的二维码矩阵信息， 主要新增了三个位置探测图形的判定
  * <p>
- * Created by yihui on 2017/7/27.
+ * Created by qsj on 2017/7/27.
  */
 @Getter
 @Setter

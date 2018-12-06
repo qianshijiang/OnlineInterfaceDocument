@@ -3,7 +3,7 @@ package com.cn.interfacedocument.qrcode.util;
 import java.awt.*;
 
 /**
- * Created by yihui on 2017/7/27.
+ * Created by QSJ on 2017/7/27.
  */
 public class ColorUtil {
 

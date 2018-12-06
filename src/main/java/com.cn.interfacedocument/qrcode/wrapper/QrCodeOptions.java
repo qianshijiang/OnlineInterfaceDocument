@@ -1,7 +1,6 @@
 package com.cn.interfacedocument.qrcode.wrapper;
 
 import com.google.zxing.EncodeHintType;
-import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 

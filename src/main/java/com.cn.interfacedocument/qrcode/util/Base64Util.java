@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.Base64;
 
 /**
- * Created by yihui on 2017/7/17.
+ * Created by qsj on 2018/8/15.
  */
 public class Base64Util {
 

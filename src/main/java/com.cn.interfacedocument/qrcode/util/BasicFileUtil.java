@@ -3,7 +3,7 @@ package com.cn.interfacedocument.qrcode.util;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Created by @author qsj in 2018/12/5.
+ * Created by qsj qsj in 2018/12/5.
  */
 public class BasicFileUtil {
 

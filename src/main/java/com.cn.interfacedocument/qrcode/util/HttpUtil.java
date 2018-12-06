@@ -15,7 +15,7 @@ import java.io.InputStream;
 import java.net.URI;
 
 /**
- * Created by yihui on 2017/7/13.
+ * Created by qsj on 2017/7/13.
  */
 @Slf4j
 public class HttpUtil {

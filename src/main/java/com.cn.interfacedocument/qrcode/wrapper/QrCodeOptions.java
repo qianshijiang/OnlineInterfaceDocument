@@ -1,10 +1,10 @@
 package com.cn.interfacedocument.qrcode.wrapper;
 
 import com.google.zxing.EncodeHintType;
+import lombok.Builder;
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.annotation.security.DenyAll;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.image.BufferedImage;
@@ -141,6 +141,7 @@ public class QrCodeOptions {
     /**
      * logo 的配置信息
      */
+    @Builder
     @Data
     public static class LogoOptions {
 
@@ -210,19 +211,13 @@ public class QrCodeOptions {
             this.borderColor = borderColor;
         }
 
-        @Data
-        public static class LogoOptionsBuilder{
-
-            public static LogoOptions build(){
-                return new LogoOptions();
-            }
-        }
     }
 
 
     /**
      * 背景图的配置信息
      */
+    @Builder
     @Data
     public static class BgImgOptions {
         /**
@@ -329,31 +324,6 @@ public class QrCodeOptions {
             this.startY = startY;
         }
 
-
-
-
-        public static BgImgOptionsBuilder builder(){
-            return new BgImgOptionsBuilder();
-        }
-
-        public static BgImgOptionsBuilder bgImgStyle(QrCodeOptions.LogoStyle logoStyle){
-            return new BgImgOptionsBuilder();
-        }
-
-        /**
-         * 背景配置信息初始化
-         */
-        @Data
-        public static class BgImgOptionsBuilder{
-
-            public static BgImgOptions build(){
-
-                return new BgImgOptions();
-            }
-
-
-        }
-
     }
 
 
@@ -362,6 +332,7 @@ public class QrCodeOptions {
     /**
      * 探测图形的配置信息
      */
+    @Builder
     @Data
     public static class DetectOptions {
         private Color outColor;
@@ -397,20 +368,13 @@ public class QrCodeOptions {
             this.detectImg = detectImg;
         }
 
-        @Data
-        public static class DetectOptionsBuilder{
-
-            public static DetectOptions build() {
-                return new DetectOptions();
-            }
-        }
-
     }
 
 
     /**
      * 绘制二维码的配置信息
      */
+    @Builder
     @Data
     public static class DrawOptions {
         /**
@@ -541,13 +505,6 @@ public class QrCodeOptions {
             this.size4Img = size4Img;
         }
 
-        @Data
-        public static class DrawOptionsBuilder{
-
-            public static DrawOptions build() {
-                return new DrawOptions();
-            }
-        }
     }
 
 

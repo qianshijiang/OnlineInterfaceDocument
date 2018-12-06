@@ -115,7 +115,7 @@ public class QrCodeGenWrapper {
         private QrCodeOptions.DetectOptions.DetectOptionsBuilder detectOptions;
 
 
-        /*public Builder() {
+        public Builder() {
             // 背景图默认采用覆盖方式
             bgImgOptions = QrCodeOptions.BgImgOptions.builder()
                     .bgImgStyle(QrCodeOptions.BgImgStyle.OVERRIDE)
@@ -138,7 +138,7 @@ public class QrCodeGenWrapper {
 
             // 探测图形
             detectOptions = QrCodeOptions.DetectOptions.builder();
-        }*/
+        }
 
 
         public String getMsg() {
@@ -231,12 +231,12 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setLogo(BufferedImage img) {
-            //logoOptions.logo(img);
+            logoOptions.logo(img);
             return this;
         }
 
         public Builder setLogoStyle(QrCodeOptions.LogoStyle logoStyle) {
-            //logoOptions.logoStyle(logoStyle);
+            logoOptions.logoStyle(logoStyle);
             return this;
         }
 
@@ -249,18 +249,18 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setLogoBgColor(Color color) {
-            //logoOptions.border(true);
-            //logoOptions.borderColor(color);
+            logoOptions.border(true);
+            logoOptions.borderColor(color);
             return this;
         }
 
         public Builder setLogoBorder(boolean border) {
-            //logoOptions.border(border);
+            logoOptions.border(border);
             return this;
         }
 
         public Builder setLogoRate(int rate) {
-            //logoOptions.rate(rate);
+            logoOptions.rate(rate);
             return this;
         }
 
@@ -293,41 +293,41 @@ public class QrCodeGenWrapper {
 
 
         public Builder setBgImg(BufferedImage bufferedImage) {
-            //bgImgOptions.bgImg(bufferedImage);
+            bgImgOptions.bgImg(bufferedImage);
             return this;
         }
 
 
         public Builder setBgStyle(QrCodeOptions.BgImgStyle bgImgStyle) {
-            //bgImgOptions.bgImgStyle(bgImgStyle);
+            bgImgOptions.bgImgStyle(bgImgStyle);
             return this;
         }
 
 
         public Builder setBgW(int w) {
-            //bgImgOptions.bgW(w);
+            bgImgOptions.bgW(w);
             return this;
         }
 
         public Builder setBgH(int h) {
-            //bgImgOptions.bgH(h);
+            bgImgOptions.bgH(h);
             return this;
         }
 
 
         public Builder setBgOpacity(float opacity) {
-            //bgImgOptions.opacity(opacity);
+            bgImgOptions.opacity(opacity);
             return this;
         }
 
 
         public Builder setBgStartX(int startX) {
-            //bgImgOptions.startX(startX);
+            bgImgOptions.startX(startX);
             return this;
         }
 
         public Builder setBgStartY(int startY) {
-            //bgImgOptions.startY(startY);
+            bgImgOptions.startY(startY);
             return this;
         }
 
@@ -360,7 +360,7 @@ public class QrCodeGenWrapper {
 
 
         public Builder setDetectImg(BufferedImage detectImg) {
-            //detectOptions.detectImg(detectImg);
+            detectOptions.detectImg(detectImg);
             return this;
         }
 
@@ -374,7 +374,7 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setDetectOutColor(Color outColor) {
-            //detectOptions.outColor(outColor);
+            detectOptions.outColor(outColor);
             return this;
         }
 
@@ -387,7 +387,7 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setDetectInColor(Color inColor) {
-            //detectOptions.inColor(inColor);
+            detectOptions.inColor(inColor);
             return this;
         }
 
@@ -405,7 +405,7 @@ public class QrCodeGenWrapper {
 
 
         public Builder setDrawStyle(QrCodeOptions.DrawStyle drawStyle) {
-            //drawOptions.drawStyle(drawStyle);
+            drawOptions.drawStyle(drawStyle);
             return this;
         }
 
@@ -416,7 +416,7 @@ public class QrCodeGenWrapper {
 
 
         public Builder setDrawPreColor(Color color) {
-            //drawOptions.preColor(color);
+            drawOptions.preColor(color);
             return this;
         }
 
@@ -425,12 +425,12 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setDrawBgColor(Color color) {
-            //drawOptions.bgColor(color);
+            drawOptions.bgColor(color);
             return this;
         }
 
         public Builder setDrawEnableScale(boolean enable) {
-            //drawOptions.enableScale(enable);
+            drawOptions.enableScale(enable);
             return this;
         }
 
@@ -454,7 +454,7 @@ public class QrCodeGenWrapper {
         }
 
         public Builder setDrawImg(BufferedImage img) {
-            //drawOptions.img(img);
+            drawOptions.img(img);
             return this;
         }
 
@@ -464,8 +464,8 @@ public class QrCodeGenWrapper {
                 return this;
             }
 
-            //drawOptions.enableScale(true);
-            //drawOptions.row2Img(row2img);
+            drawOptions.enableScale(true);
+            drawOptions.row2Img(row2img);
             return this;
         }
 
@@ -493,8 +493,8 @@ public class QrCodeGenWrapper {
                 return this;
             }
 
-            //drawOptions.enableScale(true);
-            //drawOptions.col2img(col2img);
+            drawOptions.enableScale(true);
+            drawOptions.col2img(col2img);
             return this;
         }
 
@@ -522,8 +522,8 @@ public class QrCodeGenWrapper {
                 return this;
             }
 
-            //drawOptions.enableScale(true);
-            //drawOptions.size4Img(size4Img);
+            drawOptions.enableScale(true);
+            drawOptions.size4Img(size4Img);
             return this;
         }
 

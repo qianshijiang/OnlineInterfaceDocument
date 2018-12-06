@@ -6,6 +6,8 @@ import org.apache.http.HttpHost;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.utils.URIUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,6 +20,7 @@ import java.net.URI;
 @Slf4j
 public class HttpUtil {
 
+    private static Logger log = LoggerFactory.getLogger(HttpUtil.class);
 
     public static InputStream downFile(String src) throws IOException {
         return downFile(URI.create(src));

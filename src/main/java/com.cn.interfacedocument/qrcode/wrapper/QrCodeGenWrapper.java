@@ -62,7 +62,7 @@ public class QrCodeGenWrapper {
     @ToString
     @Slf4j
     public static class Builder {
-        private static Logger log = LoggerFactory.getLogger(Builder.class);
+        private static final Logger log = LoggerFactory.getLogger(Builder.class);
         private static final MatrixToImageConfig DEFAULT_CONFIG = new MatrixToImageConfig();
 
         /**
@@ -209,7 +209,6 @@ public class QrCodeGenWrapper {
             this.errorCorrection = errorCorrection;
             return this;
         }
-
 
         /////////////// logo 相关配置 ///////////////
 

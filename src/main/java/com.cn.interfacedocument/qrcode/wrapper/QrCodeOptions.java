@@ -323,7 +323,31 @@ public class QrCodeOptions {
             this.startY = startY;
         }
 
+
+
+
+        public static BgImgOptionsBuilder builder(){
+            return new BgImgOptionsBuilder();
+        }
+
+        public static BgImgOptionsBuilder bgImgStyle(String em){
+            return new BgImgOptionsBuilder();
+        }
+
+        /**
+         * 背景配置信息初始化
+         */
+        @Builder
+        @Data
+        public static class BgImgOptionsBuilder{
+
+
+
+        }
+
     }
+
+
 
 
     /**

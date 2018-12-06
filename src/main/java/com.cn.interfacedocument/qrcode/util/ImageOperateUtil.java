@@ -5,7 +5,7 @@ import java.awt.geom.RoundRectangle2D;
 import java.awt.image.BufferedImage;
 
 /**
- * Created by yihui on 2018/3/23.
+ * Created by qsj on 2018/3/23.
  */
 public class ImageOperateUtil {
 
@@ -15,9 +15,7 @@ public class ImageOperateUtil {
      * @param image        原始图片
      * @return 返回圆图
      */
-    public static BufferedImage makeRoundImg(BufferedImage image,
-                                             boolean borderEnable,
-                                             Color borderColor) {
+    public static BufferedImage makeRoundImg(BufferedImage image, boolean borderEnable, Color borderColor) {
         int size, x, y;
         if(image.getWidth() > image.getHeight()) {
             size = image.getHeight();
@@ -47,9 +45,7 @@ public class ImageOperateUtil {
      * @param cornerRadius 圆角的弧度（根据实测效果，一般建议为图片宽度的1/4）, 0表示直角
      * @return
      */
-    public static BufferedImage makeRoundImg(BufferedImage image,
-                                             Rectangle rectangle,
-                                             int cornerRadius) {
+    public static BufferedImage makeRoundImg(BufferedImage image, Rectangle rectangle, int cornerRadius) {
         int x = (int) rectangle.getX(), y = (int) rectangle.getY();
         int w = (int) rectangle.getWidth();
         int h = (int) rectangle.getHeight();
@@ -83,9 +79,7 @@ public class ImageOperateUtil {
      * @param color        边框颜色
      * @return
      */
-    public static BufferedImage makeRoundBorder(BufferedImage image,
-                                                int cornerRadius,
-                                                Color color) {
+    public static BufferedImage makeRoundBorder(BufferedImage image, int cornerRadius, Color color) {
         int size = image.getWidth() / 15;
         int w = image.getWidth() + size;
         int h = image.getHeight() + size;
@@ -112,8 +106,7 @@ public class ImageOperateUtil {
      * @param cornerRadius 圆角的弧度（根据实测效果，一般建议为图片宽度的1/4）, 0表示直角
      * @return 返回圆角图
      */
-    public static BufferedImage makeRoundedCorner(BufferedImage image,
-                                                  int cornerRadius) {
+    public static BufferedImage makeRoundedCorner(BufferedImage image, int cornerRadius) {
         int w = image.getWidth();
         int h = image.getHeight();
         BufferedImage output = new BufferedImage(w, h,

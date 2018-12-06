@@ -263,8 +263,8 @@ public class FileWriteUtil {
     }
 
     @Data
-    @NoArgsConstructor
-    @AllArgsConstructor
+    //@NoArgsConstructor
+    //@AllArgsConstructor
     public static class FileInfo {
         /**
          * 文件所在的目录
@@ -283,6 +283,40 @@ public class FileWriteUtil {
          */
         private String fileType;
 
+        public FileInfo(){
+            super();
+        }
+
+        public FileInfo(String path,String filename,String fileType){
+            super();
+            this.path = path;
+            this.filename = filename;
+            this.fileType = fileType;
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public void setPath(String path) {
+            this.path = path;
+        }
+
+        public String getFilename() {
+            return filename;
+        }
+
+        public void setFilename(String filename) {
+            this.filename = filename;
+        }
+
+        public String getFileType() {
+            return fileType;
+        }
+
+        public void setFileType(String fileType) {
+            this.fileType = fileType;
+        }
 
         public String getAbsFile() {
             return path + "/" + filename + "." + fileType;

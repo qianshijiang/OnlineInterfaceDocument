@@ -26,7 +26,7 @@ import java.io.IOException;
 @Slf4j
 public class QrCodeWrapperTest {
 
-    private String msg = "https://liuyueyi.github.io/hexblog/2018/03/23/mysql之锁与事务详解/";
+    private String msg = "https://mp.csdn.net/postedit/79499687";
 
 
     @Test
@@ -45,7 +45,7 @@ public class QrCodeWrapperTest {
     public void testGenQrCode() {
         try {
 
-            boolean ans = QrCodeGenWrapper.of(msg).asFile("src/test/qrcode/gen.png");
+           boolean ans = QrCodeGenWrapper.of(msg).asFile("src/test/qrcode/gen.png");
             System.out.println(ans);
         } catch (Exception e) {
             System.out.println("create qrcode error! e: " + e);
@@ -89,7 +89,7 @@ public class QrCodeWrapperTest {
 
         // 根据本地文件生成待logo的二维码
         try {
-            String logo = "logo.jpg";
+            String logo = "src/main/resources/static/images/logo.jpg";
             boolean ans = QrCodeGenWrapper.of(msg)
                     .setW(300)
                     .setDrawPreColor(0xffff0000)
@@ -109,8 +109,8 @@ public class QrCodeWrapperTest {
 
         // 根据本地文件生成待logo的二维码，无边框， 重新着色位置探测图像， 设置背景
         try {
-            String logo = "logo.jpg";
-            String bg = "bg.png";
+            String logo = "src/main/resources/static/images/logo.jpg";
+            String bg = "src/main/resources/static/images/bg.png";
             boolean ans = QrCodeGenWrapper.of(msg)
                     .setW(300)
                     .setDrawPreColor(0xff0000ff)
@@ -133,8 +133,8 @@ public class QrCodeWrapperTest {
 
         // 根据本地文件生成待logo的二维码，无边框， 重新着色位置探测图像， 设置背景
         try {
-            String logo = "logo.jpg";
-            String bg = "bg.png";
+            String logo = "src/main/resources/static/images/logo.jpg";
+            String bg = "src/main/resources/static/images/bg.png";
             boolean ans = QrCodeGenWrapper.of(msg)
                     .setW(300)
                     .setDrawPreColor(0xff0000ff)
@@ -163,11 +163,11 @@ public class QrCodeWrapperTest {
 
     @Test
     public void testGenColorCode() {
-        String msg = "https://liuyueyi.github.io/hexblog/";
+        String msg = "https://mp.csdn.net/postedit/79499687";
         // 根据本地文件生成待logo的二维码， 重新着色位置探测图像
         try {
-            String logo = "mg.jpg";
-            String bg = "bg.png";
+            String logo = "src/main/resources/static/images/logo.jpg";
+            String bg = "src/main/resources/static/images/bg.png";
             BufferedImage img = QrCodeGenWrapper.of(msg)
                     .setW(500)
                     .setDrawPreColor(0xff002fa7) // 宝石蓝
@@ -197,15 +197,15 @@ public class QrCodeWrapperTest {
 
     @Test
     public void testGenStyleCode() {
-        String msg = "https://liuyueyi.github.io/hexblog/2018/03/23/mysql之锁与事务详解/";
-//        String msg = "http://weixin.qq.com/r/FS9waAPEg178rUcL93oH";
+        String msg = "https://mp.csdn.net/postedit/79499687";
+//        String msg = "https://mp.csdn.net/postedit/79499687";
         // 根据本地文件生成待logo的二维码， 重新着色位置探测图像
 
         for (QrCodeOptions.DrawStyle style : QrCodeOptions.DrawStyle.values()) {
 
             try {
-                String logo = "mg.jpg";
-                String bg = "bg.png";
+                String logo = "static/images/logo.jpg";
+                String bg = "static/images/bg.png";
                 BufferedImage img = QrCodeGenWrapper.of(msg)
                         .setW(540)
                         .setDrawPreColor(0xff002fa7) // 宝石蓝
@@ -239,12 +239,12 @@ public class QrCodeWrapperTest {
 
     @Test
     public void testGenStyleCodeV2() {
-        String msg = "http://weixin.qq.com/r/FS9waAPEg178rUcL93oH";
+        String msg = "https://mp.csdn.net/postedit/79499687";
 //        String msg = "https://my.oschina.net/u/566591/blog";
 
         try {
-            String logo = "logo.jpg";
-//            String bg = "qrbg.jpg";
+            String logo = "src/main/resources/static/images/logo.jpg";
+//            String bg = "src/main/resources/static/images/bg.png";
             String bg = "http://bpic.588ku.com/master_pic/00/10/04/8656612a16e2e6a.jpg";
             BufferedImage img = QrCodeGenWrapper.of(msg)
                     .setW(550)
@@ -285,7 +285,7 @@ public class QrCodeWrapperTest {
 
     @Test
     public void testGenWxQrcode() {
-        String logo = "logo.jpg";
+        String logo = "src/main/resources/static/images/logo.jpg";
 
         int size = 500;
         try {

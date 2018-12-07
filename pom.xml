@@ -43,6 +43,13 @@
         </dependency>
         <!--spring boot 的依赖 END-->
 
+        <!--加入读取配置文件依赖包-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <version>1.2.0.RELEASE</version>
+        </dependency>
+
         <!--mybatis 的依赖 START-->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

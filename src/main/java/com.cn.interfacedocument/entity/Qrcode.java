@@ -1,48 +1,108 @@
 package com.cn.interfacedocument.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class Qrcode {
-    private Long id;
+@ApiModel(value = "二维码主表",description = "记录生成的二维码信息")
+public class Qrcode implements Serializable{
 
-    private Long userId;
+    @NotEmpty(message = "主键id不能为空")
+    @ApiModelProperty(value = "主键ID")
+    private String id;
 
-    private String userType;
+    @ApiModelProperty(value = "二维码描述")
+    private String describe;
 
+    @ApiModelProperty(value = "二维码扫描次数")
+    private Long scanTimes;
+
+    @ApiModelProperty(value = "创建时间")
+    private Date createtime;
+
+    @ApiModelProperty(value = "修改时间")
+    private Date updatetime;
+
+    @ApiModelProperty(value = "二维码编号")
+    private Long qrnumber;
+
+    @ApiModelProperty(value = "答案之书ID")
+    private String answerBookId;
+
+    @ApiModelProperty(value = "删除标志：0:未删除，1:删除")
+    private String deleteFlage;
+
+    @ApiModelProperty(value = "存储的地址")
     private String url;
 
-    private String confirm;
+    @ApiModelProperty(value = "'二维码类型：0:普通二维码；1:设置颜色的二维码；3:带logo的二维码；4:带背景的二维码；5:重新着色位置探测图像")
+    private String qrcodeType;
 
-    private String name;
-
-    private Long counselorAndMediatorsId;
-
-    private Date createDate;
-
-    private Date updateDate;
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId(String id) {
+        this.id = id == null ? null : id.trim();
     }
 
-    public Long getUserId() {
-        return userId;
+    public String getDescribe() {
+        return describe;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setDescribe(String describe) {
+        this.describe = describe == null ? null : describe.trim();
     }
 
-    public String getUserType() {
-        return userType;
+    public Long getScanTimes() {
+        return scanTimes;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType == null ? null : userType.trim();
+    public void setScanTimes(Long scanTimes) {
+        this.scanTimes = scanTimes;
+    }
+
+    public Date getCreatetime() {
+        return createtime;
+    }
+
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
+    }
+
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public Long getQrnumber() {
+        return qrnumber;
+    }
+
+    public void setQrnumber(Long qrnumber) {
+        this.qrnumber = qrnumber;
+    }
+
+    public String getAnswerBookId() {
+        return answerBookId;
+    }
+
+    public void setAnswerBookId(String answerBookId) {
+        this.answerBookId = answerBookId == null ? null : answerBookId.trim();
+    }
+
+    public String getDeleteFlage() {
+        return deleteFlage;
+    }
+
+    public void setDeleteFlage(String deleteFlage) {
+        this.deleteFlage = deleteFlage == null ? null : deleteFlage.trim();
     }
 
     public String getUrl() {
@@ -53,43 +113,11 @@ public class Qrcode {
         this.url = url == null ? null : url.trim();
     }
 
-    public String getConfirm() {
-        return confirm;
+    public String getQrcodeType() {
+        return qrcodeType;
     }
 
-    public void setConfirm(String confirm) {
-        this.confirm = confirm == null ? null : confirm.trim();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public Long getCounselorAndMediatorsId() {
-        return counselorAndMediatorsId;
-    }
-
-    public void setCounselorAndMediatorsId(Long counselorAndMediatorsId) {
-        this.counselorAndMediatorsId = counselorAndMediatorsId;
-    }
-
-    public Date getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
+    public void setQrcodeType(String qrcodeType) {
+        this.qrcodeType = qrcodeType == null ? null : qrcodeType.trim();
     }
 }

@@ -2,16 +2,24 @@ package com.cn.interfacedocument.dao;
 
 import com.cn.interfacedocument.entity.Qrcode;
 
-public interface QrcodeMapper {
-    int deleteByPrimaryKey(Long id);
+import java.util.List;
 
-    int insert(Qrcode record);
+public interface QrcodeMapper extends BaseMapper<Qrcode> {
+
+    int deleteByPrimaryKey(String id);
 
     int insertSelective(Qrcode record);
 
-    Qrcode selectByPrimaryKey(Long id);
+    Qrcode selectByPrimaryKey(String id);
 
     int updateByPrimaryKeySelective(Qrcode record);
 
     int updateByPrimaryKey(Qrcode record);
+
+    List<Qrcode> findListByPage(Qrcode record);
+
+    List<Qrcode> findList();
+
+    int getCount();
+
 }

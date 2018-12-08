@@ -16,6 +16,8 @@ public interface QrcodeMapper extends BaseMapper<Qrcode> {
 
     int updateByPrimaryKey(Qrcode record);
 
+    int deletVirtual(String id,String delflage);
+
     List<Qrcode> findListByPage(Qrcode record);
 
     List<Qrcode> findList();

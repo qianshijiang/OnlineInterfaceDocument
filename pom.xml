@@ -3,6 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.cn.interfacedocument</groupId>
+    <packaging>war</packaging>
     <artifactId>OnlineInterfaceDocument</artifactId>
     <version>1.0-SNAPSHOT</version>
 
@@ -40,6 +41,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!--spring boot 的依赖 END-->
 
@@ -187,6 +195,14 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>21.0</version>
+        </dependency>
+
+        <!--添加servlet-api的依赖-->
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>tomcat-servlet-api</artifactId>
+            <version>8.0.36</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by QSJ on 2018/11/29.
  */
 @Service
-public class DictService extends AbstractService {
+public class DictService {
 
     @Autowired
     private DictMapper dictdao;

@@ -1,7 +1,6 @@
 package com.cn.interfacedocument.qrcode.productQrCode;
 
 import com.cn.interfacedocument.Util.MD5Util;
-import com.cn.interfacedocument.qrcode.util.Base64Util;
 import com.cn.interfacedocument.qrcode.util.FileWriteUtil;
 import com.cn.interfacedocument.qrcode.wrapper.QrCodeGenWrapper;
 import com.cn.interfacedocument.qrcode.wrapper.QrCodeOptions;
@@ -12,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 
 /**

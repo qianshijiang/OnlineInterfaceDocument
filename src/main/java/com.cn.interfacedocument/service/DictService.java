@@ -1,7 +1,5 @@
 package com.cn.interfacedocument.service;
 
-import com.cn.interfacedocument.dao.DictMapper;
-import com.cn.interfacedocument.entity.Dict;
 import com.cn.interfacedocument.response.ResultModel;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;

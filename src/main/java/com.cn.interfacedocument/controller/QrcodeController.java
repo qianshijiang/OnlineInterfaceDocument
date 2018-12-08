@@ -8,10 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 二维码控制层
@@ -71,6 +68,58 @@ public class QrcodeController {
             }else{
                 return ResultModel.fail("新增失败","");
             }
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
+
+    @ApiOperation("分页查询")
+    @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultModel findListByPage(Qrcode qrcode,int currentPage,int pageSize){
+        try{
+            int startPage = currentPage==0?1:currentPage;
+            int pagSize = pageSize==0?10:pageSize;
+            return ResultModel.successfull("查询成功",this.qrcodeService.findListByPage(qrcode,startPage,pagSize));
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+
+    }
+
+    /**
+     * 修改
+     * @param qrcode 二维码对象
+     * @return
+     */
+    @ApiOperation("修改数据")
+    @RequestMapping(value = "/updateBySelective", method = RequestMethod.POST)
+    public ResultModel updateByPrimaryKeySelective(@RequestBody Qrcode qrcode){
+        try{
+            int i = this.qrcodeService.updateByPrimaryKeySelective(qrcode);
+            if(i>0){
+                return ResultModel.success("修改成功",i);
+            }else{
+                return ResultModel.fail("修改失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
+
+    @ApiOperation("以Id查询")
+    @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultModel selectByPrimaryKey(String id){
+        try{
+            Qrcode qrcode = this.qrcodeService.selectByPrimaryKey(id);
+            return ResultModel.success("查询成功",qrcode);
         }catch (Exception e){
             e.printStackTrace();
             log.info(e.toString());

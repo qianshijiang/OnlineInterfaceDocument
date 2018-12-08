@@ -1,6 +1,5 @@
 package com.cn.interfacedocument.controller;
 
-import com.cn.interfacedocument.entity.Dict;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.DictService;
 import io.swagger.annotations.Api;

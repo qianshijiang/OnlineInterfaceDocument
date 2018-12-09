@@ -45,7 +45,7 @@ public class QrcodeService {
         int s = 0;
         for(int i=1; i<=BaseConstantService.count; i++){
             qrcode.setId(MD5Util.md5Encode(String.valueOf(i))); //主键id
-            qrcode.setDescribe("批量生成二维码");
+            qrcode.setDescribetion("批量生成二维码");
             qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
             qrcode.setScanTimes(0L); //扫描次数
             qrcode.setQrnumber(Long.parseLong(String.valueOf(i))); //二维码编号
@@ -73,7 +73,7 @@ public class QrcodeService {
      */
     public int insertSelectiveInterfaceAccess(Qrcode qrcode) throws Exception{
         qrcode.setId(MD5Util.md5Encode(RandomString.getRandomString(32))); //主键id
-        qrcode.setDescribe("单条生成二维码");
+        qrcode.setDescribetion("单条生成二维码");
         qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
         qrcode.setScanTimes(0L); //扫描次数
         qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
@@ -130,8 +130,8 @@ public class QrcodeService {
      * 查询数据量
      * @return
      */
-    public int getCount(){
-        return this.qrcodeMapper.getCount();
+    public int getCount(Qrcode qrcode){
+        return this.qrcodeMapper.getCount(qrcode);
     }
 
     /**
@@ -146,8 +146,8 @@ public class QrcodeService {
         //设置分页信息，分别是当前页数和每页显示的总记录数
         PageHelper.startPage(currentPage, pageSize);
 
-        List<Qrcode> allQrcode = this.qrcodeMapper.findList();        //全部基础数据
-        int countNums = this.getCount();              //总记录数
+        int countNums = this.getCount(qrcode);              //总记录数
+        List<Qrcode> allQrcode = this.qrcodeMapper.findListByPage(qrcode);        //全部基础数据
         ResultModel pageData = new ResultModel(currentPage, pageSize, countNums);
         pageData.setData(allQrcode);
         return pageData;

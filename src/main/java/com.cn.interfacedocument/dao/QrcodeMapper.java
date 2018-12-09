@@ -22,6 +22,6 @@ public interface QrcodeMapper extends BaseMapper<Qrcode> {
 
     List<Qrcode> findList();
 
-    int getCount();
+    int getCount(Qrcode record);
 
 }

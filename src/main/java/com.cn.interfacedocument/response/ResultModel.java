@@ -25,7 +25,6 @@ public class ResultModel extends PageBean implements Serializable {
     }
 
     public ResultModel(String code, Object data, String message, String error) {
-        this.code = SUCCESS_CODE;
         this.code = code;
         this.data = data;
         this.message = message;
@@ -74,6 +73,13 @@ public class ResultModel extends PageBean implements Serializable {
         return new ResultModel(ERROR_CODE, (Object)null, message, error);
     }
 
+    public static ResultModel failfull(String message, String error,ResultModel resultModel) {
+        resultModel.setMessage(message);
+        resultModel.setCode(ERROR_CODE);
+        resultModel.setError("");
+        return resultModel;
+    }
+
     /*public static ResultModel failI18n(ResponseCodeEnum responseCodeEnum, String error, Object... params) {
         String message = LocaleResolverUtil.getMessage(responseCodeEnum.getMessageKey(), params);
         return new ResultModel(responseCodeEnum.getCode(), (Object)null, message, error);
@@ -95,9 +101,9 @@ public class ResultModel extends PageBean implements Serializable {
         this.data = data;
     }
 
-    /*public String getMessage() {
-        return ValidUtil.isEmptyAndNull(this.message)?"":this.message;
-    }*/
+    public String getMessage() {
+        return this.message;
+    }
 
     public void setMessage(String message) {
         this.message = message;

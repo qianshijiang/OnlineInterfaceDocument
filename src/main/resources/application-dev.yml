@@ -1,9 +1,10 @@
-debug: false
+debug: true
 server:
   port: 8088
   #servlet:
   #    context-path: /OnlineInterfaceDocument
 spring:
+       #profiles: dev
   #mvc:
    # view:
     #  prefix: /WEB-INF/jsp/
@@ -52,9 +53,6 @@ spring:
             poolPreparedStatements: false
             # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true
             maxOpenPreparedStatements: -1
-    # 引入需要的配置文件
-    profiles:
-            active: dev
 
 mybatis:
   # mapper.xml包地址

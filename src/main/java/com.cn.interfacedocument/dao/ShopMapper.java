@@ -20,6 +20,6 @@ public interface ShopMapper extends BaseMapper<Shop>{
 
     List<Shop> findList();
 
-    int getCount();
+    int getCount(Shop record);
 
 }

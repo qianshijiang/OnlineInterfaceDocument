@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/Qrcode")
-@Api(value = "QrcodeController", tags = {"restful 二维码接口"})
+@Api(value = "QrcodeController", tags = {"二维码接口"})
 public class QrcodeController {
 
     private static final Logger log = LoggerFactory.getLogger(QrcodeController.class);

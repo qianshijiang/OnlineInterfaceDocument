@@ -1,0 +1,48 @@
+
+-- 答案之书表
+CREATE TABLE `ANSWERBOOK` (
+  `ID` varchar(64) NOT NULL DEFAULT '' COMMENT '答案之书主键',
+  `DESCRIBETION` varchar(256) DEFAULT NULL COMMENT '描述',
+  `AUTHOR` varchar(64) DEFAULT NULL COMMENT '作者',
+  `PUBLISH_TIME` datetime DEFAULT NULL COMMENT '出版时间',
+  `PRESS` varchar(64) DEFAULT NULL COMMENT '出版社',
+  `CONTENT` varchar(256) DEFAULT NULL COMMENT '内容',
+  `CREATETIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATETIME` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`ID`),
+  KEY `ANSWER_BOOK_ID` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='答案之书表';
+
+
+-- 二维码表
+CREATE TABLE `QRCODE` (
+  `ID` varchar(64) NOT NULL DEFAULT '' COMMENT '二维码主表',
+  `DESCRIBETION` varchar(256) DEFAULT NULL COMMENT '二维码描述',
+  `SCAN_TIMES` bigint(20) unsigned DEFAULT '0' COMMENT '二维码扫描次数',
+  `CREATETIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATETIME` datetime DEFAULT NULL COMMENT '修改时间',
+  `QRNUMBER` bigint(20) DEFAULT NULL COMMENT '二维码编号',
+  `ANSWER_BOOK_ID` varchar(64) DEFAULT NULL COMMENT '答案之书ID',
+  `DELETE_FLAGE` varchar(16) DEFAULT NULL COMMENT '删除标志：0:未删除，1：删除',
+  `URL` varchar(128) DEFAULT NULL COMMENT '存储的地址',
+  `QRCODE_TYPE` varchar(16) DEFAULT NULL COMMENT '二维码类型：0:普通二维码，1：设置颜色的二维码；3：带logo的二维码；4：带背景的二维码；5：重新着色位置探测图像；',
+  PRIMARY KEY (`ID`),
+  KEY `QRCODE_ID` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='二维码主表';
+
+
+-- 店铺表
+CREATE TABLE `SHOP` (
+  `ID` varchar(64) NOT NULL COMMENT '店铺表主键',
+  `NAME` varchar(64) DEFAULT NULL COMMENT '店铺名称',
+  `ADDRESS` varchar(128) DEFAULT NULL COMMENT '店铺地址',
+  `SHOPKEEPER` varchar(8) DEFAULT NULL COMMENT '店主名字',
+  `DESCRIBETION` varchar(256) DEFAULT NULL COMMENT '店铺描述',
+  `ORDER_PHONE` varchar(16) DEFAULT NULL COMMENT '订货号码',
+  `ORDER_AMOUNT` bigint(20) DEFAULT '0' COMMENT '订货数量',
+  `CREATETIME` datetime DEFAULT NULL COMMENT '创建时间',
+  `UPDATETIME` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`ID`),
+  KEY `SHOP_ID` (`ID`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='店铺表';
+

@@ -1,6 +1,8 @@
 package com.cn.interfacedocument.service;
 
 import com.cn.interfacedocument.Util.DateUtil;
+import com.cn.interfacedocument.Util.MD5Util;
+import com.cn.interfacedocument.Util.RandomString;
 import com.cn.interfacedocument.dao.AnswerbookMapper;
 import com.cn.interfacedocument.entity.Answerbook;
 import com.cn.interfacedocument.entity.Qrcode;
@@ -40,6 +42,9 @@ public class AnswerBookService {
      * @return
      */
     public int insertSelective(Answerbook record) throws Exception{
+        if(record.getId()==null){
+            record.setId(MD5Util.md5Encode(RandomString.getRandomString(32)));
+        }
         record.setAuthor(BaseConstantService.author); //作者
         record.setPublishTime(DateUtil.getStrtoDate(BaseConstantService.pubsTime,"yyyy-MM-dd")); //出版时间
         record.setPress(BaseConstantService.pub_press); //出版社

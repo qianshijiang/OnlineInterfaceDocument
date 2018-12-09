@@ -20,5 +20,5 @@ public interface AnswerbookMapper extends BaseMapper<Answerbook>{
 
     List<Answerbook> findList();
 
-    int getCount();
+    int getCount(Answerbook record);
 }

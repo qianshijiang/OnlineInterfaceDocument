@@ -23,7 +23,7 @@ public class Shop implements Serializable{
     private String shopkeeper;
 
     @ApiModelProperty(value = "店铺描述")
-    private String describe;
+    private String describetion;
 
     @ApiModelProperty(value = "订货号码")
     private String orderPhone;
@@ -69,12 +69,12 @@ public class Shop implements Serializable{
         this.shopkeeper = shopkeeper == null ? null : shopkeeper.trim();
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescribetion() {
+        return describetion;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setDescribetion(String describetion) {
+        this.describetion = describetion == null ? null : describetion.trim();
     }
 
     public String getOrderPhone() {

@@ -14,7 +14,7 @@ public class Answerbook implements Serializable{
     private String id;
 
     @ApiModelProperty(value = "描述")
-    private String describe;
+    private String describetion;
 
     @ApiModelProperty(value = "作者")
     private String author;
@@ -42,12 +42,12 @@ public class Answerbook implements Serializable{
         this.id = id == null ? null : id.trim();
     }
 
-    public String getDescribe() {
-        return describe;
+    public String getDescribetion() {
+        return describetion;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe == null ? null : describe.trim();
+    public void setDescribetion(String describetion) {
+        this.describetion = describetion == null ? null : describetion.trim();
     }
 
     public String getAuthor() {

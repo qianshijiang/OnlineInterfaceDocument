@@ -49,6 +49,13 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--本地启动需要tomcat-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
         <!--spring boot 的依赖 END-->
 
         <!--加入读取配置文件依赖包-->

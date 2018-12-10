@@ -12,12 +12,12 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @MapperScan(value = "com.cn.interfacedocument.dao")
 public class OnlineInterfaceDocumentApplication {
-    public static void main(String[] args) {
-        /**
+    /*public static void main(String[] args) {
+        *//**
          * Spring boot 程序入口
-         */
+         *//*
         SpringApplication.run(OnlineInterfaceDocumentApplication.class,args);
-    }
+    }*/
     //配置mybatis的分页插件pageHelper
     /*@Bean
     public PageHelper pageHelper(){

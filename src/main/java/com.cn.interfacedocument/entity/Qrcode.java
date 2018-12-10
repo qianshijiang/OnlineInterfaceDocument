@@ -29,8 +29,8 @@ public class Qrcode implements Serializable{
     @ApiModelProperty(value = "二维码编号")
     private Long qrnumber;
 
-    @ApiModelProperty(value = "答案之书ID")
-    private String answerBookId;
+    @ApiModelProperty(value = "答案之书书号")
+    private Long answerBookNum;
 
     @ApiModelProperty(value = "删除标志：0:未删除，1:删除")
     private String deleteFlage;
@@ -89,12 +89,12 @@ public class Qrcode implements Serializable{
         this.qrnumber = qrnumber;
     }
 
-    public String getAnswerBookId() {
-        return answerBookId;
+    public Long getAnswerBookNum() {
+        return answerBookNum;
     }
 
-    public void setAnswerBookId(String answerBookId) {
-        this.answerBookId = answerBookId == null ? null : answerBookId.trim();
+    public void setAnswerBookNum(Long answerBookNum) {
+        this.answerBookNum = answerBookNum;
     }
 
     public String getDeleteFlage() {

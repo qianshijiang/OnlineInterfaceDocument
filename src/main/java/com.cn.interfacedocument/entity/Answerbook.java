@@ -34,6 +34,9 @@ public class Answerbook implements Serializable{
     @ApiModelProperty(value = "修改时间")
     private Date updatetime;
 
+    @ApiModelProperty(value = "答案之书序号，具有唯一性")
+    private Long answNum;
+
     public String getId() {
         return id;
     }
@@ -96,5 +99,13 @@ public class Answerbook implements Serializable{
 
     public void setUpdatetime(Date updatetime) {
         this.updatetime = updatetime;
+    }
+
+    public Long getAnswNum() {
+        return answNum;
+    }
+
+    public void setAnswNum(Long answNum) {
+        this.answNum = answNum;
     }
 }

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 /**
  * 二维码业务层
@@ -27,9 +28,6 @@ public class QrcodeService {
 
     @Autowired
     private QrcodeMapper qrcodeMapper;
-
-    @Autowired
-    private AnswerBookService answerBookService;
 
     /**
      * 通过主键id删除
@@ -47,9 +45,11 @@ public class QrcodeService {
      */
     public int BashinsertSelectiveManual(Qrcode qrcode) throws Exception{
         String mesg = "";
-        Answerbook ansBook = new Answerbook();
         int s = 0;
+        int result = 0;
         for(int i=1; i<=BaseConstantService.count; i++){
+            Random ra = new Random(); //生成1-640之间的随机整数
+            result = ra.nextInt(640)+1;
             qrcode.setId(MD5Util.md5Encode(String.valueOf(i))); //主键id
             qrcode.setDescribetion("批量生成二维码");
             qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
@@ -58,13 +58,9 @@ public class QrcodeService {
             qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
             qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
-            qrcode.setAnswerBookId(MD5Util.md5Encode(RandomString.getRandomString(32))); //设置答案之书ID
+            qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
 
-             s = this.qrcodeMapper.insertSelective(qrcode);
-             if(s>0){
-                 ansBook.setId(qrcode.getAnswerBookId());
-                 this.answerBookService.insertSelective(ansBook);
-             }
+            s += this.qrcodeMapper.insertSelective(qrcode);
             mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i)));
             boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
 
@@ -82,6 +78,8 @@ public class QrcodeService {
      */
     public int insertSelectiveInterfaceAccess(Qrcode qrcode) throws Exception{
         Answerbook ansBook = new Answerbook();
+        Random ra = new Random(); //生成1-640之间的随机整数
+        int result = ra.nextInt(640)+1;;
         qrcode.setId(MD5Util.md5Encode(RandomString.getRandomString(32))); //主键id
         qrcode.setDescribetion("单条生成二维码");
         qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
@@ -89,14 +87,10 @@ public class QrcodeService {
         qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
         qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
         qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
-        qrcode.setAnswerBookId(MD5Util.md5Encode(RandomString.getRandomString(32))); //设置答案之书ID
+        qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书书号
 
         int i = this.qrcodeMapper.insertSelective(qrcode); //插入二维码表
 
-        if(i>0){
-            ansBook.setId(qrcode.getAnswerBookId());
-            this.answerBookService.insertSelective(ansBook); //插入答案之书表
-        }
         String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId());
         boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+qrcode.getId()+".png");
 

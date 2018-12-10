@@ -110,11 +110,13 @@ public class QrcodeService {
      */
     public Qrcode selectByPrimaryKey(String id){
        String qrcodeId = MD5Util.jMCode(id);
+       Qrcode qrcode = this.qrcodeMapper.selectByPrimaryKey(qrcodeId);
+       long scantimes = qrcode.getScanTimes() + 1L; //扫描一次加一
        Qrcode qrC = new Qrcode();
-        qrC.setId(qrcodeId); //设置ID
-        qrC.setScanTimes(1L);//设置扫描次数
-        qrC.setDeleteFlage("1"); //失效就设置为已删除状态
-        this.updateByPrimaryKeySelective(qrC);
+       qrC.setId(qrcodeId); //设置ID
+       qrC.setScanTimes(scantimes);//设置扫描次数
+       qrC.setDeleteFlage("1"); //失效就设置为已删除状态
+       this.updateByPrimaryKeySelective(qrC);
        return this.qrcodeMapper.selectByPrimaryKey(qrcodeId);
     }
 

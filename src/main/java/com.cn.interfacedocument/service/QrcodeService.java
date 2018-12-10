@@ -65,7 +65,7 @@ public class QrcodeService {
                  ansBook.setId(qrcode.getAnswerBookId());
                  this.answerBookService.insertSelective(ansBook);
              }
-            mesg = BaseConstantService.message + "&QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i)));
+            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i)));
             boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
 
             //boolean ans = QrCodeGenWrapper.of(mesg).asFile("E:/QrCode/common/qrcode/"+i+".png");
@@ -97,7 +97,7 @@ public class QrcodeService {
             ansBook.setId(qrcode.getAnswerBookId());
             this.answerBookService.insertSelective(ansBook); //插入答案之书表
         }
-        String mesg = BaseConstantService.message + "&QrcodrId=" + MD5Util.kLCode(qrcode.getId());
+        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId());
         boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+qrcode.getId()+".png");
 
         return i;

@@ -14,7 +14,7 @@ public class BaseConstantService{
     /**
      * 二维码携带的前段信息
      */
-    public static final String message = "https:www.baidu.com";
+    public static final String message = "118.25.195.253:8088/Qrcode/selectByPrimaryKey";
 
     /**
      * 答案之书作者

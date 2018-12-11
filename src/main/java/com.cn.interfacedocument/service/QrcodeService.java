@@ -60,8 +60,11 @@ public class QrcodeService {
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
             qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
 
+            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i))) + "&ShopId=" + BaseConstantService.shopID_one;
+            qrcode.setQrcodeContent(mesg); //设置二维码内容
+
             s += this.qrcodeMapper.insertSelective(qrcode);
-            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i)));
+
             boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
 
             //boolean ans = QrCodeGenWrapper.of(mesg).asFile("E:/QrCode/common/qrcode/"+i+".png");
@@ -89,9 +92,11 @@ public class QrcodeService {
         qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
         qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书书号
 
+        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId()) + "&ShopId=" + BaseConstantService.shopID_one;
+        qrcode.setQrcodeContent(mesg); //设置二维码连接地址
+
         int i = this.qrcodeMapper.insertSelective(qrcode); //插入二维码表
 
-        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId());
         boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+qrcode.getId()+".png");
 
         return i;

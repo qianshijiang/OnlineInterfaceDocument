@@ -56,4 +56,8 @@ public class BaseConstantService{
      */
     public static final String shoporderPhone = "15969570834";
 
+    /**
+     * 设置店铺Id常量
+     */
+    public static final String shopID_one = "B141ED0F02742108A6DA5F1606587092";
 }

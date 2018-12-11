@@ -41,6 +41,9 @@ public class Qrcode implements Serializable{
     @ApiModelProperty(value = "'二维码类型：0:普通二维码；1:设置颜色的二维码；3:带logo的二维码；4:带背景的二维码；5:重新着色位置探测图像")
     private String qrcodeType;
 
+    @ApiModelProperty(value = "二维码内容")
+    private String qrcodeContent;
+
     public String getId() {
         return id;
     }
@@ -119,5 +122,13 @@ public class Qrcode implements Serializable{
 
     public void setQrcodeType(String qrcodeType) {
         this.qrcodeType = qrcodeType == null ? null : qrcodeType.trim();
+    }
+
+    public String getQrcodeContent() {
+        return qrcodeContent;
+    }
+
+    public void setQrcodeContent(String qrcodeContent) {
+        this.qrcodeContent = qrcodeContent;
     }
 }

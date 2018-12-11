@@ -29,10 +29,10 @@ CREATE TABLE `QRCODE` (
   `DELETE_FLAGE` varchar(16) DEFAULT NULL COMMENT '删除标志：0:未删除，1：删除',
   `URL` varchar(128) DEFAULT NULL COMMENT '存储的地址',
   `QRCODE_TYPE` varchar(16) DEFAULT NULL COMMENT '二维码类型：0:普通二维码，1：设置颜色的二维码；3：带logo的二维码；4：带背景的二维码；5：重新着色位置探测图像；',
+  `QRCODE_CONTENT` varchar(128) DEFAULT NULL COMMENT '二维码中包含的内容',
   PRIMARY KEY (`ID`),
   KEY `QRCODE_ID` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='二维码主表';
-
 
 
 

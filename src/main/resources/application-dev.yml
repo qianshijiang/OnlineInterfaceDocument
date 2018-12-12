@@ -5,11 +5,11 @@ server:
   #    context-path: /OnlineInterfaceDocument
 spring:
        #profiles: dev
-  #mvc:
-   # view:
-    #  prefix: /WEB-INF/jsp/
-   #   suffix: .jsp
-   # static-path-pattern: /static/**
+  mvc:
+    view:
+      prefix: /
+      suffix: .html
+    static-path-pattern: /dist/static/**
     datasource:
             name: mysql
             #Oracle驱动

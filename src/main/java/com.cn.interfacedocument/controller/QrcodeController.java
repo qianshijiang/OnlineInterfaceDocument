@@ -28,7 +28,7 @@ public class QrcodeController {
     @ApiOperation(value = "主页接口")
     @RequestMapping(value = "/Index",method = {RequestMethod.GET,RequestMethod.POST})
     public ModelAndView index() {
-        return new ModelAndView("index");
+        return new ModelAndView("dist/index");
     }
 
     @ApiOperation(value = "通过ID删除")

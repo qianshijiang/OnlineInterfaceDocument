@@ -1,5 +1,6 @@
 package com.cn.interfacedocument.service;
 
+import com.cn.interfacedocument.Util.Base64Util;
 import com.cn.interfacedocument.Util.DateUtil;
 import com.cn.interfacedocument.Util.MD5Util;
 import com.cn.interfacedocument.Util.RandomString;
@@ -61,7 +62,7 @@ public class QrcodeService {
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
             qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
 
-            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcodeId) + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum" + String.valueOf(qrcode.getAnswerBookNum());
+            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcodeId) + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + Base64Util.encryptBASE64(String.valueOf(qrcode.getAnswerBookNum()).getBytes());
             qrcode.setQrcodeContent(mesg); //设置二维码内容
 
             s += this.qrcodeMapper.insertSelective(qrcode);
@@ -93,7 +94,7 @@ public class QrcodeService {
         qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
         qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书书号
 
-        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId()) + "&ShopId=" + BaseConstantService.shopID_one + "&AnsBookNum" + MD5Util.kLCode(String.valueOf(qrcode.getAnswerBookNum()));
+        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId()) + "&ShopId=" + BaseConstantService.shopID_one + "&AnsBookNum=" + Base64Util.encryptBASE64(String.valueOf(qrcode.getAnswerBookNum()).getBytes());
         qrcode.setQrcodeContent(mesg); //设置二维码连接地址
 
         int i = this.qrcodeMapper.insertSelective(qrcode); //插入二维码表

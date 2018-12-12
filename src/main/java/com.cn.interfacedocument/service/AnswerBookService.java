@@ -1,5 +1,6 @@
 package com.cn.interfacedocument.service;
 
+import com.cn.interfacedocument.Util.Base64Util;
 import com.cn.interfacedocument.Util.DateUtil;
 import com.cn.interfacedocument.Util.MD5Util;
 import com.cn.interfacedocument.Util.RandomString;
@@ -96,8 +97,8 @@ public class AnswerBookService {
      * @param num 答案之书编号
      * @return
      */
-    public Answerbook findByAnsNum(String num){
-        Long ansNum = Long.parseLong(MD5Util.jMCode(num)); //解密
+    public Answerbook findByAnsNum(String num) throws Exception{
+        Long ansNum = Long.parseLong(Base64Util.decryptBASE64ToString(num)); //解密
         return this.answerbookMapper.findByAnsNum(ansNum);
     }
 }

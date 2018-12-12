@@ -81,7 +81,19 @@ public class AnswerBookController {
         try{
             int startPage = currentPage==0?1:currentPage;
             int pagSize = pageSize==0?10:pageSize;
-            return ResultModel.successfull("查询成功",this.findListByPage(answerbook, currentPage, pageSize));
+            return ResultModel.successfull("查询成功",this.answerBookService.findListByPage(answerbook, currentPage, pageSize));
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
+    @ApiOperation("答案之书通过编号查询")
+    @RequestMapping(value = "/findByAnsNum", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultModel findByAnsNum(Long ansNum){
+        try{
+            return ResultModel.success("查询成功",this.answerBookService.findByAnsNum(ansNum));
         }catch (Exception e){
             e.printStackTrace();
             log.info(e.toString());

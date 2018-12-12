@@ -91,4 +91,14 @@ public class AnswerBookService {
         return this.answerbookMapper.getCount(record);
     }
 
+    /**
+     * 通过答案之书编号查询
+     * @param num 答案之书编号
+     * @return
+     */
+    public Answerbook findByAnsNum(Long num){
+        String str = String.valueOf(num);
+        Long ansNum = Long.parseLong(MD5Util.jMCode(str)); //解密
+        return this.answerbookMapper.findByAnsNum(ansNum);
+    }
 }

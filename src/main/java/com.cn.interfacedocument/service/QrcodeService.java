@@ -50,7 +50,8 @@ public class QrcodeService {
         for(int i=1; i<=BaseConstantService.count; i++){
             Random ra = new Random(); //生成1-640之间的随机整数
             result = ra.nextInt(640)+1;
-            qrcode.setId(MD5Util.md5Encode(String.valueOf(i))); //主键id
+            String qrcodeId = MD5Util.md5Encode(RandomString.getRandomString(32));
+            qrcode.setId(qrcodeId); //主键id
             qrcode.setDescribetion("批量生成二维码");
             qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
             qrcode.setScanTimes(0L); //扫描次数
@@ -60,7 +61,7 @@ public class QrcodeService {
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
             qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
 
-            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(MD5Util.md5Encode(String.valueOf(i))) + "&ShopId=" + BaseConstantService.shopID_one;
+            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcodeId) + "&ShopId=" + BaseConstantService.shopID_one;
             qrcode.setQrcodeContent(mesg); //设置二维码内容
 
             s += this.qrcodeMapper.insertSelective(qrcode);

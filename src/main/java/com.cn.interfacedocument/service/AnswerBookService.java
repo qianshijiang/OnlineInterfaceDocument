@@ -96,9 +96,8 @@ public class AnswerBookService {
      * @param num 答案之书编号
      * @return
      */
-    public Answerbook findByAnsNum(Long num){
-        String str = String.valueOf(num);
-        Long ansNum = Long.parseLong(MD5Util.jMCode(str)); //解密
+    public Answerbook findByAnsNum(String num){
+        Long ansNum = Long.parseLong(MD5Util.jMCode(num)); //解密
         return this.answerbookMapper.findByAnsNum(ansNum);
     }
 }

@@ -1,15 +1,17 @@
 debug: true
 server:
   port: 8888
-  #servlet:
-  #    context-path: /OnlineInterfaceDocument
+  servlet:
+      context-path: /OnlineInterfaceDocument
 spring:
        #profiles: dev
-  #mvc:
+  mvc:
    # view:
     #  prefix: /WEB-INF/jsp/
    #   suffix: .jsp
-   # static-path-pattern: /static/**
+     static-path-pattern: /**
+  resources:
+          static-locations: classpath:/META-INF/resources/
     datasource:
             name: mysql
             #Oracle驱动
@@ -82,3 +84,4 @@ resources:
     appname: spring-boot-example
     # 日志打印的基础扫描包
     basepackage: com.cn.interfacedocument
+#添加Swagger配置

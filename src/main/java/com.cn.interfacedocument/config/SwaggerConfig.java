@@ -31,7 +31,7 @@ public class SwaggerConfig {
     // licnce url
     private final String licenseUrl = "https://mit-license.org/";
     // 接口作者联系方式
-    private final Contact contact = new Contact("钱仕江", "https://github.com/qianshijiang/OnlineInterfaceDocument.git", "1965297290@qq.com");
+    private final Contact contact = new Contact("钱仕江", "http://www.itblogger.cn", "1965297290@qq.com");
 
     @Bean
     public Docket buildDocket() {

@@ -14,7 +14,7 @@ public class BaseConstantService{
     /**
      * 二维码携带的前段信息
      */
-    public static final String message = "140.143.97.150:8888/Qrcode/selectByPrimaryKey";
+    public static final String message = "140.143.97.150:8888/Qrcode/Index";
 
     /**
      * 答案之书作者

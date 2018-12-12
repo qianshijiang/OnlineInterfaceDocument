@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 二维码控制层
@@ -23,6 +24,12 @@ public class QrcodeController {
 
     @Autowired
     private QrcodeService qrcodeService;
+
+    @ApiOperation(value = "主页接口")
+    @RequestMapping(value = "/Index",method = {RequestMethod.GET,RequestMethod.POST})
+    public ModelAndView index() {
+        return new ModelAndView("index");
+    }
 
     @ApiOperation(value = "通过ID删除")
     @RequestMapping(value = "/deleteByKey",method = {RequestMethod.GET,RequestMethod.POST})

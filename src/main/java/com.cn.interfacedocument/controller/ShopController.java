@@ -1,5 +1,7 @@
 package com.cn.interfacedocument.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cn.interfacedocument.entity.Shop;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.ShopService;
@@ -8,17 +10,14 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 店铺控制层
  * Created by QSJ on 2018/12/9.
  */
 @RestController
-@RequestMapping("/Shop")
+@RequestMapping("/Qrcode/Shop")
 @Api(value = "ShopController",tags = "店铺接口")
 public class ShopController {
 
@@ -62,8 +61,10 @@ public class ShopController {
 
     @ApiOperation(value = "通过Id数据")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String param){
       try{
+          JSONObject obj = JSON.parseObject("param");
+          String id = obj.getString("id");
           Shop shop = this.shopService.selectByPrimaryKey(id);
           return ResultModel.success("查询成功",shop);
       }catch (Exception e){
@@ -75,7 +76,7 @@ public class ShopController {
 
     @ApiOperation(value = "修改店铺数据")
     @RequestMapping(value = "/updateBySelect",method = {RequestMethod.POST})
-    public ResultModel updateByPrimaryKeySelective(Shop shop){
+    public ResultModel updateByPrimaryKeySelective(@RequestBody Shop shop){
         try{
             int i = this.shopService.updateByPrimaryKeySelective(shop);
             if(i>0){
@@ -93,7 +94,7 @@ public class ShopController {
     @ApiOperation("店铺分页查询")
     @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findListByPage(Shop shop,int currentPage,int pageSize){
+    public ResultModel findListByPage(@RequestBody Shop shop,int currentPage,int pageSize){
       try{
           int startPage = currentPage==0?1:currentPage;
           int pagSize = pageSize==0?10:pageSize;

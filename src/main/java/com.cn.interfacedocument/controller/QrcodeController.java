@@ -1,5 +1,7 @@
 package com.cn.interfacedocument.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cn.interfacedocument.entity.Qrcode;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.QrcodeService;
@@ -50,9 +52,9 @@ public class QrcodeController {
 
     @ApiOperation(value = "以接口形式访问单条添加")
     @RequestMapping(value = "/insertAccess",method = RequestMethod.POST)
-    public ResultModel insertSelectiveInterfaceAccess(@RequestBody Qrcode qrCode){
+    public ResultModel insertSelectiveInterfaceAccess(@RequestBody Qrcode qrcode){
         try{
-            int i = this.qrcodeService.insertSelectiveInterfaceAccess(qrCode);
+            int i = this.qrcodeService.insertSelectiveInterfaceAccess(qrcode);
             if(i>0){
                 return ResultModel.success("新增成功",i);
             }else{
@@ -85,7 +87,7 @@ public class QrcodeController {
     @ApiOperation("分页查询")
     @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findListByPage(Qrcode qrcode,int currentPage,int pageSize){
+    public ResultModel findListByPage(@RequestBody Qrcode qrcode,int currentPage,int pageSize){
         try{
             int startPage = currentPage==0?1:currentPage;
             int pagSize = pageSize==0?10:pageSize;
@@ -123,8 +125,10 @@ public class QrcodeController {
     @ApiOperation("以Id查询")
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel selectByPrimaryKey(String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String param){
         try{
+            JSONObject obj = JSON.parseObject("param");
+            String id = obj.getString("id");
             Qrcode qrcode = this.qrcodeService.selectByPrimaryKey(id);
             return ResultModel.success("查询成功",qrcode);
         }catch (Exception e){
@@ -133,7 +137,4 @@ public class QrcodeController {
             return ResultModel.fail("服务器发生未知错误，请稍后重试","");
         }
     }
-
-
-
 }

@@ -1,5 +1,7 @@
 package com.cn.interfacedocument.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.cn.interfacedocument.entity.Answerbook;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.AnswerBookService;
@@ -8,17 +10,14 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 答案之书控制层
  * Created by QSJ on 2018/12/9.
  */
 @RestController
-@RequestMapping("/Answerbook")
+@RequestMapping("/Qrcode/Answerbook")
 @Api(value = "AnswerBookController",tags = "答案之书接口")
 public class AnswerBookController {
 
@@ -46,8 +45,10 @@ public class AnswerBookController {
 
     @ApiOperation(value = "通过ID查询")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String param){
        try{
+           JSONObject obj = JSON.parseObject("param");
+           String id = obj.getString("id");
            Answerbook ans = this.answerBookService.selectByPrimaryKey(id);
            return ResultModel.success("查询成功",ans);
        }catch (Exception e){
@@ -59,7 +60,7 @@ public class AnswerBookController {
 
     @ApiOperation(value = "修改答案之书")
     @RequestMapping(value = "/updateBySelect",method = RequestMethod.POST)
-    public ResultModel updateByPrimaryKeySelective(Answerbook answerbook){
+    public ResultModel updateByPrimaryKeySelective(@RequestBody Answerbook answerbook){
       try{
           int i = this.answerBookService.updateByPrimaryKeySelective(answerbook);
           if(i>0){
@@ -77,7 +78,7 @@ public class AnswerBookController {
     @ApiOperation("答案之书分页查询")
     @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findListByPage(Answerbook answerbook,int currentPage,int pageSize){
+    public ResultModel findListByPage(@RequestBody Answerbook answerbook,int currentPage,int pageSize){
         try{
             int startPage = currentPage==0?1:currentPage;
             int pagSize = pageSize==0?10:pageSize;
@@ -91,8 +92,10 @@ public class AnswerBookController {
     @ApiOperation("答案之书通过编号查询")
     @RequestMapping(value = "/findByAnsNum", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findByAnsNum(String ansNum){
+    public ResultModel findByAnsNum(@RequestBody String param){
         try{
+            JSONObject obj = JSON.parseObject("param");
+            String ansNum = obj.getString("ansNum");
             return ResultModel.success("查询成功",this.answerBookService.findByAnsNum(ansNum));
         }catch (Exception e){
             e.printStackTrace();

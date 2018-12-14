@@ -16,6 +16,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -28,6 +29,7 @@ import java.sql.SQLException;
 @MapperScan(basePackages = MasterDataSourceConfig.PACKAGE, sqlSessionFactoryRef = "masterSqlSessionFactory")
 @PropertySource("classpath:application-dev.yml")//制定读取配置文件的路径
 @ConfigurationProperties(prefix = "spring.datasource")
+@EnableTransactionManagement
 public class MasterDataSourceConfig {
 
     static final String PACKAGE = "com.cn.interfacedocument.dao";
@@ -262,7 +264,7 @@ public class MasterDataSourceConfig {
         DruidDataSource datasource = new DruidDataSource();
 
         datasource.setUrl(this.dbUrl);
-        datasource.setUsername(username);
+        datasource.setUsername("root");
         datasource.setPassword(password);
         datasource.setDriverClassName(driverClassName);
 

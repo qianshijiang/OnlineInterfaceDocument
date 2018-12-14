@@ -77,6 +77,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <!--mysql 的依赖 END-->
 
@@ -131,6 +132,13 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.1</version>
         </dependency>
+
+        <!--加入springboot数据驱动-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+        </dependency>
+
         <!-- alibaba的json格式化对象 -->
         <dependency>
             <groupId>com.alibaba</groupId>

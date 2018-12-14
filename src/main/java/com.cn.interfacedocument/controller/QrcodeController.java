@@ -50,8 +50,10 @@ public class QrcodeController {
 
     @ApiOperation(value = "以接口形式访问单条添加")
     @RequestMapping(value = "/insertAccess",method = RequestMethod.POST)
-    public ResultModel insertSelectiveInterfaceAccess(@RequestBody Qrcode qrCode){
+    public ResultModel insertSelectiveInterfaceAccess(){
         try{
+            //@RequestBody Qrcode qrCode
+            Qrcode qrCode = new Qrcode();
             int i = this.qrcodeService.insertSelectiveInterfaceAccess(qrCode);
             if(i>0){
                 return ResultModel.success("新增成功",i);
@@ -67,8 +69,10 @@ public class QrcodeController {
 
     @ApiOperation(value = "以接口形式访问批量添加")
     @RequestMapping(value = "/insertManual",method = RequestMethod.POST)
-    public ResultModel BashinsertSelectiveManual(@RequestBody Qrcode qrCode){
+    public ResultModel BashinsertSelectiveManual(){
         try{
+            //@RequestBody Qrcode qrCode
+            Qrcode qrCode = new Qrcode();
             int i = this.qrcodeService.BashinsertSelectiveManual(qrCode);
             if(i>0){
                 return ResultModel.success("新增成功",i);

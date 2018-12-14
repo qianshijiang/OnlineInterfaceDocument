@@ -82,7 +82,6 @@ public class QrcodeService {
      * @return
      */
     public int insertSelectiveInterfaceAccess(Qrcode qrcode) throws Exception{
-        Answerbook ansBook = new Answerbook();
         Random ra = new Random(); //生成1-640之间的随机整数
         int result = ra.nextInt(640)+1;;
         qrcode.setId(MD5Util.md5Encode(RandomString.getRandomString(32))); //主键id

@@ -14,10 +14,6 @@ spring:
    #       static-locations: classpath:/META-INF/resources/
     datasource:
             name: mysql
-            #Oracle驱动
-            #driver-class-name: oracle.jdbc.OracleDriver
-            #mysql驱动
-            driver-class-name: com.mysql.jdbc.Driver
             # 如果存在多个数据源，监控的时候可以通过名字来区分开来
             # 连接数据库的url
             #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
@@ -26,15 +22,19 @@ spring:
             username: root
             #  连接数据库的密码
             password: yn_odr520!
+            #Oracle驱动
+            #driver-class-name: oracle.jdbc.OracleDriver
+            #mysql驱动
+            driver-class-name: com.mysql.jdbc.Driver
             # 使用druid数据源
             type: com.alibaba.druid.pool.DruidDataSource
+            # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
+            initialSize: 1
             # 扩展插件
             # 监控统计用的filter:stat 日志用的filter:log4j 防御sql注入的filter:wall
             filters: stat
             # 最大连接池数量
             maxActive: 20
-            # 初始化时建立物理连接的个数。初始化发生在显示调用init方法，或者第一次getConnection时
-            initialSize: 1
             # 获取连接时最大等待时间，单位毫秒
             maxWait: 60000
             # 最小连接池数量
@@ -55,6 +55,8 @@ spring:
             poolPreparedStatements: false
             # 要启用PSCache，必须配置大于0，当大于0时，poolPreparedStatements自动触发修改为true
             maxOpenPreparedStatements: -1
+            connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+            maxPoolPreparedStatementPerConnectionSize: 20
 
 mybatis:
   # mapper.xml包地址
@@ -62,9 +64,12 @@ mybatis:
   # pojo生成包地址
   type-aliases-package: com.cn.interfacedocument.entity
 
-  #log4j2
+#log4j2
 logging:
   config: classpath:log4j2-spring.xml
+  # 打印sql
+  level:
+       com.cn.interfacedocument.dao: debug
 
   # pagehelper分页插件
 pagehelper:

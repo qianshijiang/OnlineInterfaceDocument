@@ -1,7 +1,6 @@
 package com.cn.interfacedocument.dao;
 
 import com.cn.interfacedocument.entity.Qrcode;
-
 import java.util.List;
 
 public interface QrcodeMapper extends BaseMapper<Qrcode> {

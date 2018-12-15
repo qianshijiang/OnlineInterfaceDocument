@@ -97,8 +97,7 @@ public class AnswerBookService {
      * @param num 答案之书编号
      * @return
      */
-    public Answerbook findByAnsNum(String num) throws Exception{
-        Long ansNum = Long.parseLong(Base64Util.decryptBASE64ToString(num)); //解密
+    public Answerbook findByAnsNum(Long ansNum) throws Exception{
         return this.answerbookMapper.findByAnsNum(ansNum);
     }
 }

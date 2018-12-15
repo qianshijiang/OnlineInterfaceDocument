@@ -63,7 +63,7 @@ public class QrcodeService {
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
             qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
 
-            mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcodeId) + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + Base64Util.encryptBASE64(String.valueOf(qrcode.getAnswerBookNum()).getBytes());
+            mesg = BaseConstantService.message + "?QrcodrId=" + qrcodeId + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + qrcode.getAnswerBookNum();
             qrcode.setQrcodeContent(mesg); //设置二维码内容
 
             s += this.qrcodeMapper.insertSelective(qrcode);
@@ -94,7 +94,7 @@ public class QrcodeService {
         qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
         qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书书号
 
-        String mesg = BaseConstantService.message + "?QrcodrId=" + MD5Util.kLCode(qrcode.getId()) + "&ShopId=" + BaseConstantService.shopID_one + "&AnsBookNum=" + Base64Util.encryptBASE64(String.valueOf(qrcode.getAnswerBookNum()).getBytes());
+        String mesg = BaseConstantService.message + "?QrcodrId=" + qrcode.getId() + "&ShopId=" + BaseConstantService.shopID_one + "&AnsBookNum=" + qrcode.getAnswerBookNum();
         qrcode.setQrcodeContent(mesg); //设置二维码连接地址
 
         int i = this.qrcodeMapper.insertSelective(qrcode); //插入二维码表
@@ -110,15 +110,14 @@ public class QrcodeService {
      * @return
      */
     public Qrcode selectByPrimaryKey(String id){
-       String qrcodeId = MD5Util.jMCode(id);
-       Qrcode qrcode = this.qrcodeMapper.selectByPrimaryKey(qrcodeId);
+       Qrcode qrcode = this.qrcodeMapper.selectByPrimaryKey(id);
        long scantimes = qrcode.getScanTimes() + 1L; //扫描一次加一
        Qrcode qrC = new Qrcode();
-       qrC.setId(qrcodeId); //设置ID
+       qrC.setId(id); //设置ID
        qrC.setScanTimes(scantimes);//设置扫描次数
        qrC.setDeleteFlage("1"); //失效就设置为已删除状态
        this.updateByPrimaryKeySelective(qrC);
-       return this.qrcodeMapper.selectByPrimaryKey(qrcodeId);
+       return this.qrcodeMapper.selectByPrimaryKey(id);
     }
 
     /**
@@ -127,9 +126,7 @@ public class QrcodeService {
      * @return
      */
     public int updateByPrimaryKeySelective(Qrcode qrcode){
-        if(qrcode.getId()!= null){
-            qrcode.setId(MD5Util.jMCode(qrcode.getId())); //解密id
-        }
+
         return this.qrcodeMapper.updateByPrimaryKeySelective(qrcode);
     }
 

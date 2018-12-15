@@ -45,10 +45,8 @@ public class AnswerBookController {
 
     @ApiOperation(value = "通过ID查询")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(@RequestBody String param){
+    public ResultModel selectByPrimaryKey(@RequestBody String id){
        try{
-           JSONObject obj = JSON.parseObject("param");
-           String id = obj.getString("id");
            Answerbook ans = this.answerBookService.selectByPrimaryKey(id);
            return ResultModel.success("查询成功",ans);
        }catch (Exception e){
@@ -92,7 +90,7 @@ public class AnswerBookController {
     @ApiOperation("答案之书通过编号查询")
     @RequestMapping(value = "/findByAnsNum", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findByAnsNum(@RequestBody String ansNum){
+    public ResultModel findByAnsNum(@RequestBody Long ansNum){
         try{
             return ResultModel.success("查询成功",this.answerBookService.findByAnsNum(ansNum));
         }catch (Exception e){

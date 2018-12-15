@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context docBase="/data/dispute_https/DMMR/QrCode/common/" path="/common" reloadable="true"/>
+
+<!-- 放在${tomcatHome}/conf/Catalina/localhost 目录下，配置虚拟路径.docBase的值与config.properties中upload.path的值一致 -->

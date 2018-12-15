@@ -9,12 +9,12 @@ public class BaseConstantService{
     /**
      * 生成二维码的数量
      */
-    public static final Integer count = 100;
+    public static final Integer count = 10;
 
     /**
      * 二维码携带的前段信息
      */
-    public static final String message = "140.143.97.150:8888/Qrcode/Index";
+    public static final String message = "140.143.97.150:8889/Qrcode/Index";
 
     /**
      * 答案之书作者

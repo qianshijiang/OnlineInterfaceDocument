@@ -55,7 +55,7 @@ public class QrcodeService {
             String qrcodeId = MD5Util.md5Encode(RandomString.getRandomString(32));
             qrcode.setId(qrcodeId); //主键id
             qrcode.setDescribetion("批量生成二维码");
-            qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
+            qrcode.setUrl("/"+ qrcode.getId() + "/" + i + ".png"); //存储的urli
             qrcode.setScanTimes(0L); //扫描次数
             qrcode.setQrnumber(Long.parseLong(String.valueOf(i))); //二维码编号
             qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间

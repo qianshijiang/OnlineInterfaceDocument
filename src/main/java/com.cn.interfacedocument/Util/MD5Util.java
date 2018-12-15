@@ -60,7 +60,7 @@ public class MD5Util {
 	// 测试主函数
 	public static void main(String args[]) throws Exception{
 		//String s = RandomString.getRandomString(32);
-		String s = "20";
+		String s = "0B119C4522A8549DFEE7950FB425B85E";
 		System.out.println("原始：" + s);
 		System.out.println("MD5后：" + MD5Util.md5Encode(s));
 		System.out.println("MD5后再加密：" + kLCode(s));

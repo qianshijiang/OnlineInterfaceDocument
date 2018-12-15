@@ -92,10 +92,8 @@ public class AnswerBookController {
     @ApiOperation("答案之书通过编号查询")
     @RequestMapping(value = "/findByAnsNum", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findByAnsNum(@RequestBody String param){
+    public ResultModel findByAnsNum(@RequestBody String ansNum){
         try{
-            JSONObject obj = JSON.parseObject("param");
-            String ansNum = obj.getString("ansNum");
             return ResultModel.success("查询成功",this.answerBookService.findByAnsNum(ansNum));
         }catch (Exception e){
             e.printStackTrace();

@@ -61,10 +61,8 @@ public class ShopController {
 
     @ApiOperation(value = "通过Id数据")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(@RequestBody String param){
+    public ResultModel selectByPrimaryKey(@RequestBody String id){
       try{
-          JSONObject obj = JSON.parseObject("param");
-          String id = obj.getString("id");
           Shop shop = this.shopService.selectByPrimaryKey(id);
           return ResultModel.success("查询成功",shop);
       }catch (Exception e){

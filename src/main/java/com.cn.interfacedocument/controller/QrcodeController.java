@@ -125,10 +125,8 @@ public class QrcodeController {
     @ApiOperation("以Id查询")
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel selectByPrimaryKey(@RequestBody String param){
+    public ResultModel selectByPrimaryKey(@RequestBody String id){
         try{
-            JSONObject obj = JSON.parseObject("param");
-            String id = obj.getString("id");
             Qrcode qrcode = this.qrcodeService.selectByPrimaryKey(id);
             return ResultModel.success("查询成功",qrcode);
         }catch (Exception e){

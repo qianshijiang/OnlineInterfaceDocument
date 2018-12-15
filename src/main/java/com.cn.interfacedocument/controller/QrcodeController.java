@@ -26,12 +26,6 @@ public class QrcodeController {
     @Autowired
     private QrcodeService qrcodeService;
 
-    @ApiOperation(value = "主页接口")
-    @RequestMapping(value = "/Index",method = {RequestMethod.GET,RequestMethod.POST})
-    public ModelAndView index() {
-        return new ModelAndView("index");
-    }
-
     @ApiOperation(value = "通过ID删除")
     @RequestMapping(value = "/deleteByKey",method = {RequestMethod.GET,RequestMethod.POST})
     public ResultModel deleteByPrimaryKey(@RequestBody String params){

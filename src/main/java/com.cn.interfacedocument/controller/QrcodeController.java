@@ -5,6 +5,7 @@ import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.QrcodeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,11 @@ public class QrcodeController {
 
     @ApiOperation(value = "通过ID删除")
     @RequestMapping(value = "/deleteByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel deleteByPrimaryKey(String id){
+    public ResultModel deleteByPrimaryKey(@RequestBody String params){
         try{
+            JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+            String id = obj.getString("id");
+
             int i = this.qrcodeService.deleteByPrimaryKey(id);
             if(i>0){
                 return ResultModel.success("删除成功",i);
@@ -89,6 +93,7 @@ public class QrcodeController {
         try{
             int startPage = currentPage==0?1:currentPage;
             int pagSize = pageSize==0?10:pageSize;
+
             return ResultModel.successfull("查询成功",this.qrcodeService.findListByPage(qrcode,startPage,pagSize));
         }catch (Exception e){
             e.printStackTrace();
@@ -123,8 +128,11 @@ public class QrcodeController {
     @ApiOperation("以Id查询")
     @RequestMapping(value = "/selectByPrimaryKey", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel selectByPrimaryKey(@RequestBody String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String params){
         try{
+            JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+            String id = obj.getString("id");
+
             Qrcode qrcode = this.qrcodeService.selectByPrimaryKey(id);
             return ResultModel.success("查询成功",qrcode);
         }catch (Exception e){

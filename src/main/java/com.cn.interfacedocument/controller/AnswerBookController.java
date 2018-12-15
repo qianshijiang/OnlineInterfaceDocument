@@ -5,6 +5,7 @@ import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.AnswerBookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,11 @@ public class AnswerBookController {
 
     @ApiOperation(value = "通过ID删除")
     @RequestMapping(value = "/deleteByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel deleteByPrimaryKey(String id){
+    public ResultModel deleteByPrimaryKey(@RequestBody String params){
       try{
+          JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+          String id = obj.getString("id");
+
           int i = this.answerBookService.deleteByPrimaryKey(id);
           if(i>0){
               return ResultModel.success("删除成功",i);
@@ -43,8 +47,11 @@ public class AnswerBookController {
 
     @ApiOperation(value = "通过ID查询")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(@RequestBody String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String params){
        try{
+           JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+           String id = obj.getString("id");
+
            Answerbook ans = this.answerBookService.selectByPrimaryKey(id);
            return ResultModel.success("查询成功",ans);
        }catch (Exception e){
@@ -78,7 +85,8 @@ public class AnswerBookController {
         try{
             int startPage = currentPage==0?1:currentPage;
             int pagSize = pageSize==0?10:pageSize;
-            return ResultModel.successfull("查询成功",this.answerBookService.findListByPage(answerbook, currentPage, pageSize));
+
+            return ResultModel.successfull("查询成功",this.answerBookService.findListByPage(answerbook, startPage, pagSize));
         }catch (Exception e){
             e.printStackTrace();
             log.info(e.toString());
@@ -88,8 +96,10 @@ public class AnswerBookController {
     @ApiOperation("答案之书通过编号查询")
     @RequestMapping(value = "/findByAnsNum", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findByAnsNum(@RequestBody Long ansNum){
+    public ResultModel findByAnsNum(@RequestBody String params){
         try{
+            JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+            Long ansNum = obj.getLong("ansNum");
             return ResultModel.success("查询成功",this.answerBookService.findByAnsNum(ansNum));
         }catch (Exception e){
             e.printStackTrace();

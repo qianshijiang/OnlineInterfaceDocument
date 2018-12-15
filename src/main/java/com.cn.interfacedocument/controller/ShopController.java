@@ -1,16 +1,18 @@
 package com.cn.interfacedocument.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.cn.interfacedocument.entity.Shop;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.ShopService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+
+import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 店铺控制层
@@ -27,8 +29,11 @@ public class ShopController {
 
     @ApiOperation(value = "通过ID删除")
     @RequestMapping(value = "/deleteByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel deleteByPrimaryKey(String id){
+    public ResultModel deleteByPrimaryKey(@RequestBody String params){
       try{
+           JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+           String id = obj.getString("id");
+
            int i = this.shopService.deleteByPrimaryKey(id);
            if(i>0){
                return ResultModel.success("删除成功",i);
@@ -61,8 +66,11 @@ public class ShopController {
 
     @ApiOperation(value = "通过Id数据")
     @RequestMapping(value = "/selectByKey",method = {RequestMethod.GET,RequestMethod.POST})
-    public ResultModel selectByPrimaryKey(@RequestBody String id){
+    public ResultModel selectByPrimaryKey(@RequestBody String params){
       try{
+
+          JSONObject obj = JSONObject.fromObject(params).getJSONObject("param");
+          String id = obj.getString("id");
           Shop shop = this.shopService.selectByPrimaryKey(id);
           return ResultModel.success("查询成功",shop);
       }catch (Exception e){
@@ -92,10 +100,11 @@ public class ShopController {
     @ApiOperation("店铺分页查询")
     @RequestMapping(value = "/findListByPage", method = RequestMethod.POST)
     @ResponseBody
-    public ResultModel findListByPage(@RequestBody Shop shop,int currentPage,int pageSize){
+    public ResultModel findListByPage(@RequestBody Shop shop, int currentPage, int pageSize, HttpServletRequest request){
       try{
           int startPage = currentPage==0?1:currentPage;
           int pagSize = pageSize==0?10:pageSize;
+
           return ResultModel.successfull("查询成功",this.shopService.findListByPage(shop,startPage,pagSize));
       }catch (Exception e){
           e.printStackTrace();

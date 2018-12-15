@@ -1,7 +1,5 @@
 package com.cn.interfacedocument.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.cn.interfacedocument.entity.Answerbook;
 import com.cn.interfacedocument.response.ResultModel;
 import com.cn.interfacedocument.service.AnswerBookService;

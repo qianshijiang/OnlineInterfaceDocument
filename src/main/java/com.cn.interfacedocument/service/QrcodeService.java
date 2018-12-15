@@ -1,12 +1,9 @@
 package com.cn.interfacedocument.service;
 
-import com.alibaba.fastjson.JSONObject;
-import com.cn.interfacedocument.Util.Base64Util;
 import com.cn.interfacedocument.Util.DateUtil;
 import com.cn.interfacedocument.Util.MD5Util;
 import com.cn.interfacedocument.Util.RandomString;
 import com.cn.interfacedocument.dao.QrcodeMapper;
-import com.cn.interfacedocument.entity.Answerbook;
 import com.cn.interfacedocument.entity.Qrcode;
 import com.cn.interfacedocument.qrcode.wrapper.QrCodeGenWrapper;
 import com.cn.interfacedocument.response.ResultModel;

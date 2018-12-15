@@ -1,12 +1,10 @@
 package com.cn.interfacedocument.service;
 
-import com.cn.interfacedocument.Util.Base64Util;
 import com.cn.interfacedocument.Util.DateUtil;
 import com.cn.interfacedocument.Util.MD5Util;
 import com.cn.interfacedocument.Util.RandomString;
 import com.cn.interfacedocument.dao.AnswerbookMapper;
 import com.cn.interfacedocument.entity.Answerbook;
-import com.cn.interfacedocument.entity.Qrcode;
 import com.cn.interfacedocument.response.ResultModel;
 import com.github.pagehelper.PageHelper;
 import org.slf4j.Logger;

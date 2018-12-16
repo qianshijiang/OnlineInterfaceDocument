@@ -14,7 +14,7 @@ public class BaseConstantService{
     /**
      * 二维码携带的前段信息
      */
-    public static final String message = "140.143.97.150:8889/Index/Indexpage"; //answercode.com
+    public static final String message = "www.xunhuai.net/Index/Indexpage"; //answercode.com;www.xunhuai.net 140.143.97.150:8889
 
     /**
      * 答案之书作者

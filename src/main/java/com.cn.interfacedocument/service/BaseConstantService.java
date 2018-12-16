@@ -12,8 +12,14 @@ public class BaseConstantService{
     public static final Integer count = 10;
 
     /**
+     * 生成答案之书的数量
+     */
+    public static final Integer ansCount = 1000;
+
+    /**
      * 二维码携带的前段信息
      * answercode.com;www.xunhuai.net www.anscode.com 140.143.97.150:8889
+     * 132.232.240.177
      */
     public static final String message = "140.143.97.150:8889/Index/Indexpage";
 

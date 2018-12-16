@@ -107,4 +107,22 @@ public class AnswerBookController {
             return ResultModel.fail("服务器发生未知错误，请稍后重试","");
         }
     }
+
+    @ApiOperation("批量插入答案之书数据")
+    @RequestMapping(value = "/insertBash", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultModel insertBash(@RequestBody Answerbook answerbook){
+        try{
+            int i = this.answerBookService.insertBashSelective(answerbook);
+            if(i>0){
+                return ResultModel.success("修改成功",i);
+            }else{
+                return ResultModel.fail("修改失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
 }

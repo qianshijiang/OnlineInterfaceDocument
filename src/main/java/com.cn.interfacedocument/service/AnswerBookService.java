@@ -36,7 +36,7 @@ public class AnswerBookService {
     }
 
     /**
-     * 插入数据
+     * 单条插入数据
      * @param record 答案之书
      * @return
      */
@@ -50,6 +50,20 @@ public class AnswerBookService {
         record.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
 
         return this.answerbookMapper.insertSelective(record);
+    }
+
+    /**
+     * 批量插入答案之书
+     * @param record 答案之书对象
+     * @return
+     * @throws Exception
+     */
+    public int insertBashSelective(Answerbook record) throws Exception{
+        int s = 0;
+         for(int i = 0;i<BaseConstantService.ansCount;i++){
+             s += this.insertSelective(record);
+         }
+         return s;
     }
 
     /**

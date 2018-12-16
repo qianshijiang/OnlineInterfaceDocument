@@ -54,13 +54,14 @@ public class AnswerBookService {
 
     /**
      * 批量插入答案之书
-     * @param record 答案之书对象
+     * @param records 答案之书对象
      * @return
      * @throws Exception
      */
-    public int insertBashSelective(Answerbook record) throws Exception{
+    public int insertBashSelective(Answerbook records) throws Exception{
         int s = 0;
          for(int i = 0;i<BaseConstantService.ansCount;i++){
+             Answerbook record = new Answerbook();
              s += this.insertSelective(record);
          }
          return s;

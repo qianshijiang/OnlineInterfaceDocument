@@ -115,9 +115,9 @@ public class AnswerBookController {
         try{
             int i = this.answerBookService.insertBashSelective(answerbook);
             if(i>0){
-                return ResultModel.success("修改成功",i);
+                return ResultModel.success("新增成功",i);
             }else{
-                return ResultModel.fail("修改失败","");
+                return ResultModel.fail("新增失败","");
             }
         }catch (Exception e){
             e.printStackTrace();

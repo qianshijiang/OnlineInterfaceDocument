@@ -47,8 +47,8 @@ public class QrcodeService {
         int s = 0;
         int result = 0;
         for(int i=1; i<=BaseConstantService.count; i++){
-            Random ra = new Random(); //生成1-640之间的随机整数
-            result = ra.nextInt(640)+1;
+            Random ra = new Random(); //生成1-318之间的随机整数
+            result = ra.nextInt(318)+1;
             String qrcodeId = MD5Util.md5Encode(RandomString.getRandomString(32));
             qrcode.setId(qrcodeId); //主键id
             qrcode.setDescribetion("批量生成二维码");
@@ -80,8 +80,8 @@ public class QrcodeService {
      * @return
      */
     public int insertSelectiveInterfaceAccess(Qrcode qrcode) throws Exception{
-        Random ra = new Random(); //生成1-640之间的随机整数
-        int result = ra.nextInt(640)+1;;
+        Random ra = new Random(); //生成1-318之间的随机整数
+        int result = ra.nextInt(318)+1;;
         qrcode.setId(MD5Util.md5Encode(RandomString.getRandomString(32))); //主键id
         qrcode.setDescribetion("单条生成二维码");
         qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url

@@ -59,6 +59,7 @@ public class QrcodeService {
             qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
             qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
             qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
+            qrcode.setQrcodeType("0"); //普通二维码
 
             mesg = BaseConstantService.message + "?QrcodrId=" + qrcodeId + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + qrcode.getAnswerBookNum();
             qrcode.setQrcodeContent(mesg); //设置二维码内容
@@ -86,6 +87,7 @@ public class QrcodeService {
         qrcode.setDescribetion("单条生成二维码");
         qrcode.setUrl("/"+ qrcode.getId() + "/" + qrcode.getId() + ".png"); //存储的url
         qrcode.setScanTimes(0L); //扫描次数
+        qrcode.setQrcodeType("0"); //普通二维码
         qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
         qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
         qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除

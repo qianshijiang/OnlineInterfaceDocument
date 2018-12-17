@@ -17,11 +17,12 @@ spring:
             # 如果存在多个数据源，监控的时候可以通过名字来区分开来
             # 连接数据库的url
             #url: jdbc:oracle:thin:@127.0.0.1:1521:orcl
-            url: jdbc:mysql://140.143.97.150:3306/qrcode?autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+            #url: jdbc:mysql://140.143.97.150:3306/qrcode?autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+            url: jdbc:mysql://132.232.240.177:3306/qrcode?autoReconnect=true&failOverReadOnly=false&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
             # 连接数据库的账号
             username: root
             #  连接数据库的密码
-            password: yn_odr520!
+            password: QSJ&&YXC #yn_odr520!
             #Oracle驱动
             #driver-class-name: oracle.jdbc.OracleDriver
             #mysql驱动

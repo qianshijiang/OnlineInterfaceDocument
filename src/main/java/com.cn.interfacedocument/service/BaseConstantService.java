@@ -21,7 +21,7 @@ public class BaseConstantService{
      * answercode.com;www.xunhuai.net www.anscode.com 140.143.97.150:8889
      * 132.232.240.177
      */
-    public static final String message = "140.143.97.150:8889/Index/Indexpage";
+    public static final String message = "132.232.240.177:8889/Index/Indexpage";
 
     /**
      * 答案之书作者

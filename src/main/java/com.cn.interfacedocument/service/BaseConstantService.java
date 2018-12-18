@@ -20,8 +20,9 @@ public class BaseConstantService{
      * 二维码携带的前段信息
      * answercode.com;www.xunhuai.net www.anscode.com 140.143.97.150:8889
      * 132.232.240.177 www.ansnac.com
+     * 129.28.109.71  www.xunhuai.net
      */
-    public static final String message = "132.232.240.177:8889/Index/Indexpage";
+    public static final String message = "www.xunhuai.net/Index/Indexpage";
 
     /**
      * 答案之书作者

@@ -92,3 +92,10 @@ resources:
     # 日志打印的基础扫描包
     basepackage: com.cn.interfacedocument
 #添加Swagger配置
+
+#对swagger-ui进行配置
+pringfox:
+  documentation:
+    swagger:
+      v2:
+        host: 129.28.109.71:8888/anscodeApi

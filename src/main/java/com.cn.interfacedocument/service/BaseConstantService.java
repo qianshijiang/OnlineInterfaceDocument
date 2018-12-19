@@ -22,7 +22,7 @@ public class BaseConstantService{
      * 132.232.240.177 www.ansnac.com
      * 129.28.109.71  www.xunhuai.net
      */
-    public static final String message = "www.xunhuai.net/Index/Indexpage";
+    public static final String message = "https://www.xunhuai.net/Index/Indexpage";
 
     /**
      * 答案之书作者

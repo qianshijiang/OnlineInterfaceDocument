@@ -9,7 +9,7 @@ public class BaseConstantService{
     /**
      * 生成二维码的数量
      */
-    public static final Integer count = 10;
+    public static final Integer count = 1000;
 
     /**
      * 生成答案之书的数量

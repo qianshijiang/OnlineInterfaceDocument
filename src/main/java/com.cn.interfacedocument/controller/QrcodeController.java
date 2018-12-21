@@ -63,11 +63,45 @@ public class QrcodeController {
         }
     }
 
-    @ApiOperation(value = "以接口形式访问批量添加")
+    @ApiOperation(value = "以接口形式访问批量添加(1000张)")
     @RequestMapping(value = "/insertManual",method = RequestMethod.POST)
     public ResultModel BashinsertSelectiveManual(@RequestBody Qrcode qrCode){
         try{
             int i = this.qrcodeService.BashinsertSelectiveManual(qrCode);
+            if(i>0){
+                return ResultModel.success("新增成功",i);
+            }else{
+                return ResultModel.fail("新增失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
+
+    @ApiOperation(value = "以接口形式访问批量添加(10000张)")
+    @RequestMapping(value = "/insertManualten",method = RequestMethod.POST)
+    public ResultModel BashinsertTenThousand(@RequestBody Qrcode qrCode){
+        try{
+            int i = this.qrcodeService.BashinsertTenThousand(qrCode);
+            if(i>0){
+                return ResultModel.success("新增成功",i);
+            }else{
+                return ResultModel.fail("新增失败","");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+            log.info(e.toString());
+            return ResultModel.fail("服务器发生未知错误，请稍后重试","");
+        }
+    }
+
+    @ApiOperation(value = "以接口形式访问批量添加(100000张)")
+    @RequestMapping(value = "/insertManualhun",method = RequestMethod.POST)
+    public ResultModel BashinsertHundredThousand(@RequestBody Qrcode qrCode){
+        try{
+            int i = this.qrcodeService.BashinsertHundredThousand(qrCode);
             if(i>0){
                 return ResultModel.success("新增成功",i);
             }else{

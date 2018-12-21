@@ -12,6 +12,16 @@ public class BaseConstantService{
     public static final Integer count = 1000;
 
     /**
+     * 生成二维码的数量
+     */
+    public static final Integer count_tenthousand = 10000;
+
+    /**
+     * 生成二维码的数量
+     */
+    public static final Integer count_hundredthousand = 100000;
+
+    /**
      * 生成答案之书的数量
      */
     public static final Integer ansCount = 1000;

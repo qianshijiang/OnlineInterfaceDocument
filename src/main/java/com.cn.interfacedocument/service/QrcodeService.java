@@ -67,13 +67,79 @@ public class QrcodeService {
             s += this.qrcodeMapper.insertSelective(qrcode);
 
             boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
-
             //boolean ans = QrCodeGenWrapper.of(mesg).asFile("E:/QrCode/common/qrcode/"+i+".png");
-
         }
-
         return s;
     }
+
+    /**
+     * 批量生成二维码 以对象形式插入
+     * @param qrcode 二维码对象
+     * @return
+     */
+    public int BashinsertTenThousand(Qrcode qrcode) throws Exception{
+        String mesg = "";
+        int s = 0;
+        int result = 0;
+        for(int i=1; i<=BaseConstantService.count_tenthousand; i++){
+            Random ra = new Random(); //生成1-318之间的随机整数
+            result = ra.nextInt(318)+1;
+            String qrcodeId = MD5Util.md5Encode(RandomString.getRandomString(32));
+            qrcode.setId(qrcodeId); //主键id
+            qrcode.setDescribetion("批量生成二维码");
+            qrcode.setUrl("/"+ qrcode.getId() + "/" + i + ".png"); //存储的urli
+            qrcode.setScanTimes(0L); //扫描次数
+            qrcode.setQrnumber(Long.parseLong(String.valueOf(i))); //二维码编号
+            qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
+            qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
+            qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
+            qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
+            qrcode.setQrcodeType("0"); //普通二维码
+
+            mesg = BaseConstantService.message + "?QrcodrId=" + qrcodeId + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + qrcode.getAnswerBookNum();
+            qrcode.setQrcodeContent(mesg); //设置二维码内容
+
+            s += this.qrcodeMapper.insertSelective(qrcode);
+
+            boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
+        }
+        return s;
+    }
+
+    /**
+     * 批量生成二维码 以对象形式插入
+     * @param qrcode 二维码对象
+     * @return
+     */
+    public int BashinsertHundredThousand(Qrcode qrcode) throws Exception{
+        String mesg = "";
+        int s = 0;
+        int result = 0;
+        for(int i=1; i<=BaseConstantService.count_hundredthousand; i++){
+            Random ra = new Random(); //生成1-318之间的随机整数
+            result = ra.nextInt(318)+1;
+            String qrcodeId = MD5Util.md5Encode(RandomString.getRandomString(32));
+            qrcode.setId(qrcodeId); //主键id
+            qrcode.setDescribetion("批量生成二维码");
+            qrcode.setUrl("/"+ qrcode.getId() + "/" + i + ".png"); //存储的urli
+            qrcode.setScanTimes(0L); //扫描次数
+            qrcode.setQrnumber(Long.parseLong(String.valueOf(i))); //二维码编号
+            qrcode.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
+            qrcode.setCreatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //创建时间
+            qrcode.setDeleteFlage("0"); //删除标志 0:未删除，1:删除
+            qrcode.setAnswerBookNum(Long.parseLong(String.valueOf(result))); //设置答案之书ID
+            qrcode.setQrcodeType("0"); //普通二维码
+
+            mesg = BaseConstantService.message + "?QrcodrId=" + qrcodeId + "&ShopId=" + BaseConstantService.shopID_one  + "&AnsBookNum=" + qrcode.getAnswerBookNum();
+            qrcode.setQrcodeContent(mesg); //设置二维码内容
+
+            s += this.qrcodeMapper.insertSelective(qrcode);
+
+            boolean ans = QrCodeGenWrapper.of(mesg).asFile("/data/dispute_https/DMMR/QrCode/common/"+qrcode.getId()+"/"+i+".png");
+        }
+        return s;
+    }
+
 
     /**
      * 以接口访问形式生成

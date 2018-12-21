@@ -310,4 +310,32 @@ public class QrCodeWrapperTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void testGenWxGenQrcode() {
+        String logo = "logo.jpg";
+
+        int size = 300;
+        try {
+            BufferedImage img = QrCodeGenWrapper.of(msg)
+                    .setW(size)
+                    .setH(size)
+                    //.setDetectImg("detect.png")
+                    .setDrawPreColor(0xff008e59)
+                    //.setDrawPreColor(0xff002fa7)
+                    .setErrorCorrection(ErrorCorrectionLevel.M)
+                    .setLogoStyle(QrCodeOptions.LogoStyle.ROUND)
+                    .setLogoBgColor(Color.LIGHT_GRAY)
+                    .setLogo(logo)
+                    .setLogoRate(10)
+                    .setDrawStyle(QrCodeOptions.DrawStyle.CIRCLE)
+                    .setDrawEnableScale(true)
+                    .asBufferedImage();
+            ImageIO.write(img, "png", new File("src/test/qrcode/style_gen.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+    }
 }

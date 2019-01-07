@@ -174,13 +174,14 @@ public class QrcodeService {
      * @param id 二维码id
      * @return
      */
-    public Qrcode selectByPrimaryKey(String id){
+    public Qrcode selectByPrimaryKey(String id)throws Exception{
        Qrcode qrcode = this.qrcodeMapper.selectByPrimaryKey(id);
        long scantimes = qrcode.getScanTimes() + 1L; //扫描一次加一
        Qrcode qrC = new Qrcode();
        qrC.setId(id); //设置ID
        qrC.setScanTimes(scantimes);//设置扫描次数
        qrC.setDeleteFlage("1"); //失效就设置为已删除状态
+       qrC.setUpdatetime(DateUtil.getInDate("yyyy-MM-dd HH:mm:ss")); //修改时间
        this.updateByPrimaryKeySelective(qrC);
        return this.qrcodeMapper.selectByPrimaryKey(id);
     }
